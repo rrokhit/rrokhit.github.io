@@ -1,7 +1,4 @@
 //Guap Software
-const electron = require("electron");
-const path = require("path");
-const BrowserWindow = electron.remote.BrowserWindow;
 var inputvalue = document.getElementById("date-selector");
 var radioResponse = document.getElementsByName("initial-menu");
 // var getDivision = document.getElementByName("initial-menu").value;
