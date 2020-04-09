@@ -53,6 +53,7 @@ function signIn() {
     .then((loginResponse) => {
       console.log("id_token acquired at: " + new Date().toString());
       console.log(loginResponse);
+          console.log(Object.keys(loginResponse));
       return myMSALObj.acquireTokenSilent(AccessTokenRequest);
       // if (myMSALObj.getAccount()) {
       //   showWelcomeMessage(myMSALObj.getAccount());
