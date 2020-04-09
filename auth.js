@@ -53,14 +53,14 @@ function signIn() {
     .then((loginResponse) => {
       console.log("id_token acquired at: " + new Date().toString());
       console.log(loginResponse);
-          console.log(Object.keys(loginResponse));
+      console.log(Object.keys(loginResponse));
       return myMSALObj.acquireTokenSilent(AccessTokenRequest);
       // if (myMSALObj.getAccount()) {
       //   showWelcomeMessage(myMSALObj.getAccount());
       // }
     }).then((accessTokenResponse)=>{
       const token = accessTokenResponse.accessToken;
-    console.log(token);
+      console.log(token);
     })
     .catch((error) => {
       if(error.name === "InteractionRequiredAuthError"){
@@ -79,40 +79,42 @@ function signOut() {
   myMSALObj.logout();
 }
 
-// function getTokenPopup(tokenRequest) {
-//   return myMSALObj.acquireTokenSilent(tokenRequest).catch((error) => {
-//     console.log(error);
-//     console.log("silent token acquisition fails. acquiring token using popup");
+function getTokenPopup(tokenRequest) {
+  return myMSALObj.acquireTokenSilent(tokenRequest).catch((error) => {
+    console.log(error);
+    console.log("silent token acquisition fails. acquiring token using popup");
 
-//     // fallback to interaction when silent call fails
-//     return myMSALObj
-//       .acquireTokenPopup(tokenRequest)
-//       .then((tokenResponse) => {
-//         return tokenResponse;
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   });
-// }
+    // fallback to interaction when silent call fails
+    return myMSALObj
+      .acquireTokenPopup(tokenRequest)
+      .then((tokenResponse) => {
+        return tokenResponse;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+}
+
 
 function seeProfile() {
   
-  const account = myMSALObj.getAccount();
-  console.log(account.userName);
-  console.log(account.accountIdentifier);
+  // const account = myMSALObj.getAccount();
+  // console.log(account.userName);
+  // console.log(account.accountIdentifier);
+  // console.log(callMSGraph(graphConfig.graphMeEndpoint,))
   
-  // if (myMSALObj.getAccount()) {
-  //   getTokenPopup(tokenRequest)
-  //     .then((response) => {
-  //       callMSGraph(
-  //         graphConfig.graphMeEndpoint,
-  //         response.accessToken
-  //       );
+  if (myMSALObj.getAccount()) {
+    getTokenPopup(AccessTokenRequest)
+      .then((response) => {
+        callMSGraph(
+          graphConfig.graphMeEndpoint,
+          response.accessToken
+        );
 
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }
