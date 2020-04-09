@@ -14,7 +14,7 @@ const msalConfig = {
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 const loginRequest = {
-  scopes: ["openid", "profile", "user.read"],
+  scopes: ["openid", "profile", "user.read.All"],
   prompt : "select_account",
 };
 
@@ -33,7 +33,7 @@ myMSALObj.handleRedirectCallback((error, response) => {
 //     console.log(error);
 //   });
 const AccessTokenRequest = {
-  scopes: ["openid", "profile", "user.read"],
+  scopes: ["openid", "profile", "user.read.All"],
 };
 
 // myMSALObj
