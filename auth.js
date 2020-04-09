@@ -91,7 +91,7 @@ function seeProfile() {
   // console.log(callMSGraph(graphConfig.graphMeEndpoint,))
   
   if (myMSALObj.getAccount()) {
-    getTokenPopup(AccessTokenRequest)
+    getTokenPopup(loginRequest)
       .then((response) => {
       console.log(response.accessToken);
         callMSGraph(
