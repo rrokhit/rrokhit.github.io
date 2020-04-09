@@ -22,28 +22,28 @@ myMSALObj.handleRedirectCallback((error, response) => {
   console.log(response);
 });
 
-myMSALObj
-  .loginRedirect(loginRequest)
-  .then((loginResponse) => {
-    //Login Success callback code here
-    console.log(loginResponse);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+// myMSALObj
+//   .loginRedirect(loginRequest)
+//   .then((loginResponse) => {
+//     //Login Success callback code here
+//     console.log(loginResponse);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
 const tokenRequest = {
   scopes: ["openid", "profile", "User.Read"],
 };
 
-myMSALObj
-  .acquireTokenSilent(tokenRequest)
-  .then((tokenResponse) => {
-    // Callback code here
-    console.log(tokenResponse.accessToken);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+// myMSALObj
+//   .acquireTokenSilent(tokenRequest)
+//   .then((tokenResponse) => {
+//     // Callback code here
+//     console.log(tokenResponse.accessToken);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
 
 function signIn() {
   myMSALObj
@@ -65,14 +65,14 @@ function signOut() {
   myMSALObj.logout();
 }
 
-function getTokenPopup(request) {
-  return myMSALObj.acquireTokenSilent(request).catch((error) => {
+function getTokenPopup(tokenRequest) {
+  return myMSALObj.acquireTokenSilent(tokenRequest).catch((error) => {
     console.log(error);
     console.log("silent token acquisition fails. acquiring token using popup");
 
     // fallback to interaction when silent call fails
     return myMSALObj
-      .acquireTokenPopup(request)
+      .acquireTokenPopup(tokenRequest)
       .then((tokenResponse) => {
         return tokenResponse;
       })
