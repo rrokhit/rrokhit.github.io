@@ -47,7 +47,7 @@ const tokenRequest = {
 
 function signIn() {
   myMSALObj
-    .loginRedirect(loginRequest)
+    .loginRedirect(tokenRequest)
     .then((loginResponse) => {
       console.log("id_token acquired at: " + new Date().toString());
       console.log(loginResponse);
@@ -84,7 +84,7 @@ function getTokenPopup(tokenRequest) {
 
 function seeProfile() {
   if (myMSALObj.getAccount()) {
-    getTokenPopup(loginRequest)
+    getTokenPopup(tokenRequest)
       .then((response) => {
         callMSGraph(
           graphConfig.graphMeEndpoint,
