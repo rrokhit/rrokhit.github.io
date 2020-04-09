@@ -60,6 +60,7 @@ function signIn() {
       // }
     }).then((accessTokenResponse)=>{
       const token = accessTokenResponse.accessToken;
+    console.log(token);
     })
     .catch((error) => {
       if(error.name === "InteractionRequiredAuthError"){
