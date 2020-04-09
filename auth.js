@@ -47,7 +47,7 @@ const tokenRequest = {
 
 function signIn() {
   myMSALObj
-    .loginRedirect(loginRequest)
+    .loginRedirect(loginRequest.scopes)
     .then((loginResponse) => {
       console.log("id_token acquired at: " + new Date().toString());
       console.log(loginResponse);
