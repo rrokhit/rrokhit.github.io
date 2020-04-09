@@ -16,7 +16,7 @@ function callMSGraph(endpoint, token) {
 
   console.log("request made to Graph API at: " + new Date().toString());
   console.log("endpoint = " + endpoint);
-  console.log("options = " + options.json());
+  console.log("options = " + options.toString());
   fetch(endpoint, options)
     .then((response) => {
       response.json()
