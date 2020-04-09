@@ -30,7 +30,7 @@ function callMSGraph(theUrl, accessToken){
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
-      console.log("success");
+      console.log(xmlHttp.responseText);
     }
   }
   xmlHttp.open("GET", theUrl, true);
