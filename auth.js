@@ -90,8 +90,7 @@ function seeProfile() {
           graphConfig.graphMeEndpoint,
           response.accessToken
         );
-        profileButton.classList.add("d-none");
-        mailButton.classList.remove("d-none");
+
       })
       .catch((error) => {
         console.log(error);
