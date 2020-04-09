@@ -99,6 +99,9 @@ function seeProfile() {
           response.accessToken
         );
 
+      }).then((response) =>{
+        var text = document.createElement('P');
+        text.innerHTML = response;
       })
       .catch((error) => {
         console.log(error);
