@@ -55,46 +55,31 @@ function signIn() {
       console.log("id_token acquired at: " + new Date().toString());
       console.log(loginResponse);
       console.log(Object.keys(loginResponse));
-      return myMSALObj.acquireTokenSilent(AccessTokenRequest);
-      // if (myMSALObj.getAccount()) {
-      //   showWelcomeMessage(myMSALObj.getAccount());
-      // }
-    }).then((accessTokenResponse)=>{
-      const token = accessTokenResponse.accessToken;
-      console.log(accessTokenResponse);
+     
     })
     .catch((error) => {
-      if(error.name === "InteractionRequiredAuthError"){
-        myMSALObj.acquireTokenPopup(AccessTokenRequest)
-        .then((accessTokenResponse)=>{
-          callMSGraph(endpoint, accessTokenResponse);
-        }).catch((error)=>{
-          console.log(error);
-
-        })
-      }
+      console.log(error);
     });
 }
+
 
 function signOut() {
   myMSALObj.logout();
 }
+function getTokenPopup(request) {
+  return myMSALObj.acquireTokenSilent(request)
+    .catch(error => {
+      console.log(error);
+      console.log("silent token acquisition fails. acquiring token using popup");
 
-function getTokenPopup(tokenRequest) {
-  return myMSALObj.acquireTokenSilent(tokenRequest).catch((error) => {
-    console.log(error);
-    console.log("silent token acquisition fails. acquiring token using popup");
-
-    // fallback to interaction when silent call fails
-    return myMSALObj
-      .acquireTokenPopup(tokenRequest)
-      .then((tokenResponse) => {
-        return tokenResponse;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
+      // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request)
+          .then(tokenResponse => {
+            return tokenResponse;
+          }).catch(error => {
+            console.log(error);
+          });
+    });
 }
 
 
