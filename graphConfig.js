@@ -3,7 +3,7 @@ const graphConfig = {
   graphMailEndpoint: "https://graph.microsoft.comv1.0/me/messages",
 };
 
-function callMSGraph(endpoint, token, callback) {
+function callMSGraph(endpoint, token) {
   const headers = new Headers();
   const bearer = `Bearer ${token}`;
 
@@ -18,6 +18,6 @@ function callMSGraph(endpoint, token, callback) {
 
   fetch(endpoint, options)
     .then((response) => response.json())
-    .then((response) => callback(response, endpoint))
+//     .then((response) => callback(response, endpoint))
     .catch((error) => console.log(error));
 }
