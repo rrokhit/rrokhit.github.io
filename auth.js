@@ -1,3 +1,4 @@
+
 var loginButton = document.getElementById("login-button");
 
 const msalConfig = {
@@ -60,7 +61,7 @@ function signIn() {
       // }
     }).then((accessTokenResponse)=>{
       const token = accessTokenResponse.accessToken;
-      console.log(token);
+      console.log(accessTokenResponse);
     })
     .catch((error) => {
       if(error.name === "InteractionRequiredAuthError"){
