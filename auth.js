@@ -102,6 +102,8 @@ function seeProfile() {
       }).then((response) =>{
         var text = document.createElement('P');
         text.innerHTML = response;
+        document.body.appendChild(text);
+
       })
       .catch((error) => {
         console.log(error);
