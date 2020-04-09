@@ -59,6 +59,7 @@ function signIn() {
       //   showWelcomeMessage(myMSALObj.getAccount());
       // }
     }).then((accessTokenResponse)=>{
+          console.log(accessTokenResponse);
       const token = accessTokenResponse.accessToken;
       console.log(token);
     })
