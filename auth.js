@@ -88,8 +88,7 @@ function seeProfile() {
       .then((response) => {
         callMSGraph(
           graphConfig.graphMeEndpoint,
-          response.accessToken,
-          updateUI
+          response.accessToken
         );
         profileButton.classList.add("d-none");
         mailButton.classList.remove("d-none");
