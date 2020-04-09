@@ -34,6 +34,6 @@ function callMSGraph(theUrl, accessToken){
     }
   }
   xmlHttp.open("GET", theUrl, true);
-  xmlHttp.setRequestHeader('Authorization','Bearer' + accessToken);
+  xmlHttp.setRequestHeader('Authorization','Bearer ' + accessToken);
   xmlHttp.send();
 }
