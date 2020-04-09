@@ -46,6 +46,7 @@ const tokenRequest = {
 //   });
 
 function signIn() {
+  console.log(myMSALObj);
   myMSALObj
     .loginRedirect(loginRequest.scopes)
     .then((loginResponse) => {
