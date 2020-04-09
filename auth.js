@@ -15,8 +15,8 @@ const msalConfig = {
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 const loginRequest = {
-  scopes: ["openid", "profile", "User.Read.All"],
-  prompt : "select_account",
+  scopes: ["openid", "profile", "User.Read"],
+  // prompt : "select_account",
 };
 
 myMSALObj.handleRedirectCallback((error, response) => {
@@ -34,7 +34,7 @@ myMSALObj.handleRedirectCallback((error, response) => {
 //     console.log(error);
 //   });
 const AccessTokenRequest = {
-  scopes: ["openid", "profile", "User.Read.All"],
+  scopes: ["User.Read.All"],
 };
 
 // myMSALObj
@@ -93,7 +93,7 @@ function seeProfile() {
   if (myMSALObj.getAccount()) {
     getTokenPopup(loginRequest)
       .then((response) => {
-      console.log(response.accessToken);
+        console.log(response.accessToken);
         callMSGraph(
           graphConfig.graphMeEndpoint,
           response.accessToken
