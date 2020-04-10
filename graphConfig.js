@@ -26,7 +26,13 @@ const event = JSON.stringify({
   location: {
     displayName: "Harry's Bar",
   },
-  attendees: []
+  attendees: [{
+    emailAddress : {
+      address : "kwvembu@gmail.com",
+      name: "Vembushri RM"
+    }, 
+    type: "required"
+  }]
 });
 
 
