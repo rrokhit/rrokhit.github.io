@@ -87,7 +87,7 @@ function callMSGraph2(theUrl, token) {
   // }
 
   // const client = Client.init(options);
-  var xmlHttp = new.xmlHttpRequest();
+  var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function () {
     if (this.readystate == 4 && this.status == 201) {
       console.log(xmlHttp.responseText);
