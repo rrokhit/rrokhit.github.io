@@ -35,7 +35,7 @@ myMSALObj.handleRedirectCallback((error, response) => {
 //     console.log(error);
 //   });
 const AccessTokenRequest = {
-  scopes: ["User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite"],
+  scopes: ["User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite","Mail.ReadWrite"],
 };
 
 // myMSALObj
