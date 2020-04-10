@@ -17,7 +17,7 @@ const graphConfig = {
   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
   graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages",
   graphCalendarEndpointOne: "https://graph.microsoft.com/v1.0/me/calendar/events",
- graphPeopleEndpoint : "https://graph.microsoft.com/v1.0/me/people"
+ graphPeopleEndpoint : "https://graph.microsoft.com/v1.0/me/people/?$top=100&$Select=displayName,scoredEmailAddresses"
 };
 
 
