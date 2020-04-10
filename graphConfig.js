@@ -17,7 +17,7 @@ const graphConfig = {
   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
   graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages",
   graphCalendarEndpointOne: "https://graph.microsoft.com/v1.0/me/calendar/events",
- graphPeopleEndpoint : "https://graph.microsoft.com/v1.0/me/people/?$top=100&$Select=displayName,scoredEmailAddresses"
+ graphPeopleEndpoint : "https://graph.microsoft.com/v1.0/me/people/?$top=100&$select=displayName,scoredEmailAddresses"
 };
 
 
@@ -96,6 +96,7 @@ function callMSGraphPeople(theUrl, accessToken){
   xmlHttp.open("GET",theUrl,true);
   xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
   xmlHttp.setRequestHeader('Accept', 'application/json');
+  xmlHttp.send();
 }
 
 function callMSGraph2(theUrl, token) {
