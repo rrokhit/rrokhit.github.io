@@ -1,3 +1,11 @@
+var subjectholder = document.getElementById("event-subject"); 
+var clientName = document.getElementById("client-name");
+
+
+var subjectText = clientName.innerHTML + " " + docType;
+subjectholder.setAttribute("value", subjectText);
+
+
 const graphConfig = {
   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
   graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages",
@@ -9,6 +17,7 @@ const graphConfig = {
 
 
 
+
 const event = JSON.stringify({
   subject: "Let's go for lunch",
   body: {
@@ -17,14 +26,14 @@ const event = JSON.stringify({
   },
   start: {
     dateTime: "2020-05-15T12:00:00",
-    timeZone: "Pacific Standard Time",
+    timeZone: "Eastern Standard Time",
   },
   end: {
     dateTime: "2020-05-15T14:00:00",
-    timeZone: "Pacific Standard Time",
+    timeZone: "Eastern Standard Time",
   },
   location: {
-    displayName: "Harry's Bar",
+    displayName: null,
   },
   attendees: [{
     emailAddress : {
