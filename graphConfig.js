@@ -1,9 +1,14 @@
 var subjectholder = document.getElementById("event-subject"); 
 var clientName = document.getElementById("client-name");
+var selIndex;
 
+clientName.addEventListener("input",function(event){
 
-var subjectText = clientName.innerHTML + " " + docType;
-subjectholder.setAttribute("value", subjectText);
+  var subjectText = clientName.value + " " + docType;
+  subjectholder.value = subjectText;
+
+})
+
 
 
 const graphConfig = {
