@@ -60,7 +60,7 @@
       </tbody>
     </table>
     <button id="login-button" onclick="signIn()">Login</button>
-     <button onclick="seeProfile()">See Profile!</button> 
+    <button onclick="seeProfile()">See Profile!</button>
     <div class = "outlook">
       <br>
       <br>
@@ -81,9 +81,11 @@
 <input type = "date" id = "due-date">
 <br>
 <!-- attendees -->
-<label for="atendees">Attendees</label>
-<input type = "text" id="attendees">
+<label for="atendees">Please type any attendees</label>
+<datalist id="attendees">
+</datalist>
 <br>
+<!-- Reminders -->
 <span>Select reminders</span>
 <br>
 <input type="checkbox" name="reminder" value="2 days" id="2-days">
