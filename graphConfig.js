@@ -29,11 +29,17 @@ const event = {
   attendees: [
     {
       emailAddress: {
-        address: "adelev@contoso.onmicrosoft.com",
-        name: "Adele Vance",
+        address: "r.rokhit11@gmail.com",
+        name: "Ronen Rokhit",
       },
       type: "required",
     },
+    {emailAddress: {
+      address: "kwvembu@gmail.com",
+      name: "Vembushri RM",
+    },
+    type: "required",
+  },
   ],
 };
 
