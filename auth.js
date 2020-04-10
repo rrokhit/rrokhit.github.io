@@ -1,5 +1,7 @@
 
 var loginButton = document.getElementById("login-button");
+var contactsResponse;
+var datalist = document.getElementById("attendees");
 
 const msalConfig = {
   auth: {
@@ -93,7 +95,8 @@ function getPeople(){
         );
     })
     .then((response) =>{
-      console.log(response);
+      contactsResponse = response;
+      console.log(JSON.stringify(response));
     })
     .catch((error) => {
       console.log(error);
@@ -139,5 +142,19 @@ function viewCalendar(){
     }).catch((error) => {
       console.log(error);
     })
+  }
+}
+
+
+function datalistEntry() {
+  var len = datalist.length;
+  for (let i = 0; i < len; i++) {
+    documents.removeChild(datalist.options[0]);
+  }
+  for (let i = 0; i < contactsResponse.value.length; i++) {
+    var opt = document.createElement("option");
+    opt.appendChild(document.createTextNode(contactsResponse.value[i].name));
+    opt.value = documentListFC[i];
+    documents.appendChild(opt);
   }
 }
