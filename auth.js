@@ -16,7 +16,7 @@ const msalConfig = {
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 // const authProvider = new MicrosoftGraph.ImplicitMSALAuthenticationProvider(myMSALObj, AccessTokenRequest.scopes);
 const loginRequest = {
-  scopes: ["openid", "profile", "User.Read"],
+  scopes: ["openid", "profile", "User.Read", "Organization.ReadWrite.All"],
   // prompt : "select_account",
 };
 
