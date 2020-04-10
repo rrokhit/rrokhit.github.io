@@ -96,7 +96,8 @@ function getPeople(){
     })
     .then((response) =>{
       contactsResponse = response;
-      console.log(JSON.stringify(response));
+      console.log(response.value);
+      console.dir(response);
     })
     .catch((error) => {
       console.log(error);
@@ -154,7 +155,7 @@ function datalistEntry() {
   for (let i = 0; i < contactsResponse.value.length; i++) {
     var opt = document.createElement("option");
     opt.appendChild(document.createTextNode(contactsResponse.value[i].name));
-    opt.value = documentListFC[i];
-    documents.appendChild(opt);
+    opt.value = contactsResponse.value[i].name;
+    datalist.appendChild(opt);
   }
 }
