@@ -14,6 +14,7 @@ const msalConfig = {
 };
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
+const authProvider = new MicrosoftGraph.ImplicitMSALAuthenticationProvider(myMSALObj, AccessTokenRequest.scopes);
 const loginRequest = {
   scopes: ["openid", "profile", "User.Read"],
   // prompt : "select_account",
@@ -34,7 +35,7 @@ myMSALObj.handleRedirectCallback((error, response) => {
 //     console.log(error);
 //   });
 const AccessTokenRequest = {
-  scopes: ["User.Read.All"],
+  scopes: ["User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite"],
 };
 
 // myMSALObj
@@ -103,10 +104,22 @@ function seeProfile() {
         var text = document.createElement('P');
         text.innerHTML = response;
         document.body.appendChild(text);
-
       })
       .catch((error) => {
         console.log(error);
       });
+  }
+}
+
+function viewCalendar(){
+  if(myMSALObj.getAccount()){
+    getTokenPopup(AccessTokenRequest)
+    .then((response) =>{
+      callMSGraph2(
+        graphConfig.graphCalendarEndpointOne, response.accessToken
+      )
+    }).catch((error) => {
+      console.log(error);
+    })
   }
 }
