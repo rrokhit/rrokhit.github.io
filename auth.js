@@ -35,7 +35,7 @@ myMSALObj.handleRedirectCallback((error, response) => {
 //     console.log(error);
 //   });
 const AccessTokenRequest = {
-  scopes: ["User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite","Mail.ReadWrite", "People.Read.All"],
+  scopes: ["User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite","Mail.ReadWrite", "People.Read.All","People.Read"],
 };
 
 // myMSALObj
@@ -90,7 +90,7 @@ function getPeople(){
       callMSGraphPeople(graphConfig.graphPeopleEndpoint,response.accessToken);
     })
     .then((response) =>{
-      console.log(JSON.stringify(response));
+      console.log(response);
     })
     .catch((error) => {
       console.log(error);
