@@ -89,6 +89,9 @@ function getPeople(){
     .then((response) =>{
       callMSGraphPeople(graphConfig.graphPeopleEndpoint,response.accessToken);
     })
+    .then((response) =>{
+      console.log(response);
+    })
     .catch((error) => {
       console.log(error);
     })
