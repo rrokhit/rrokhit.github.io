@@ -3,7 +3,9 @@ var clientName = document.getElementById("client-name");
 var selIndex;
 
 clientName.addEventListener("input",function(event){
-
+  selIndex = docType.selectedIndex;
+  console.log(docType);
+  console.log(clientName.value);
   var subjectText = clientName.value + " " + docType;
   subjectholder.value = subjectText;
 
@@ -15,9 +17,7 @@ const graphConfig = {
   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
   graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages",
   graphCalendarEndpointOne: "https://graph.microsoft.com/v1.0/me/calendar/events",
-  graphCalendarEndpointTwo: "https://graph.microsoft.com/v1.0/users/{id | userPrincipalName}/calendar/events",
-  graphCalendarEndpointThree: "https://graph.microsoft.com/v1.0/groups/{id}/calendar/events"
-
+ graphPeopleEndpoint : "https://graph.microsoft.com/v1.0/me/people"
 };
 
 
@@ -85,6 +85,17 @@ function callMSGraph(theUrl, accessToken){
   xmlHttp.send();
 }
 
+function callMSGraphPeople(theUrl, accessToken){
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200){
+      return(xmlHttp.responseText)
+    }
+  }
+  xmlHttp.open("GET",theUrl,true);
+  xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+  xmlHttp.setRequestHeader('Accept', 'application/json');
+}
 
 function callMSGraph2(theUrl, token) {
 
