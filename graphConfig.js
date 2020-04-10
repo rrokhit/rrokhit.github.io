@@ -9,7 +9,7 @@ const graphConfig = {
 
 
 
-const event = {
+const event = JSON.stringify({
   subject: "Let's go for lunch",
   body: {
     contentType: "HTML",
@@ -27,7 +27,7 @@ const event = {
     displayName: "Harry's Bar",
   },
   attendees: []
-};
+});
 
 
 // function callMSGraph(endpoint, token) {
