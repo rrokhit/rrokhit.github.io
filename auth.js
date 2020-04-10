@@ -35,7 +35,7 @@ myMSALObj.handleRedirectCallback((error, response) => {
 //     console.log(error);
 //   });
 const AccessTokenRequest = {
-  scopes: ["User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite","Mail.ReadWrite"],
+  scopes: ["User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite","Mail.ReadWrite", "People.Read.All"],
 };
 
 // myMSALObj
@@ -83,6 +83,18 @@ function getTokenPopup(request) {
     });
 }
 
+function getPeople(){
+  if(myMSALObj.getAccount()){
+    getTokenPopup(AccessTokenRequest)
+    .then((response) =>{
+      callMSGraphPeople(graphConfig.graphPeopleEndpoint,response.accessToken);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    
+  }
+}
 
 function seeProfile() {
   
@@ -123,3 +135,73 @@ function viewCalendar(){
     })
   }
 }
+
+// {
+//   "value": [
+//       {
+//           "id": "33b43a5b-87d6-41ec-91f8-a2610048105f",
+//           "displayName": "Marketing",
+//           "givenName": null,
+//           "surname": null,
+//           "birthday": "",
+//           "personNotes": "",
+//           "isFavorite": false,
+//           "jobTitle": null,
+//           "companyName": null,
+//           "yomiCompany": "",
+//           "department": null,
+//           "officeLocation": null,
+//           "profession": "",
+//           "userPrincipalName": "",
+//           "imAddress": null,
+//           "scoredEmailAddresses": [
+//               {
+//                   "address": "Marketing@contoso.com",
+//                   "relevanceScore": 30.0
+//               }
+//           ],
+//           "phones": [],
+//           "postalAddresses": [],
+//           "websites": [],
+//           "personType": {
+//               "class": "Group",
+//               "subclass": "UnifiedGroup"
+//           }
+//       },
+//       {
+//           "id": "e3d0513b-449e-4198-ba6f-bd97ae7cae85",
+//           "displayName": "Isaiah Langer",
+//           "givenName": "Isaiah",
+//           "surname": "Langer",
+//           "birthday": "",
+//           "personNotes": "",
+//           "isFavorite": false,
+//           "jobTitle": "Web Marketing Manager",
+//           "companyName": null,
+//           "yomiCompany": "",
+//           "department": "Sales & Marketing",
+//           "officeLocation": "20/1101",
+//           "profession": "",
+//           "userPrincipalName": "IsaiahL@contoso.com",
+//           "imAddress": "sip:isaiahl@contoso.com",
+//           "scoredEmailAddresses": [
+//               {
+//                   "address": "IsaiahL@contoso.com",
+//                   "relevanceScore": 20.0
+//               }
+//           ],
+//           "phones": [
+//               {
+//                   "type": "business",
+//                   "number": "+1 918 555 0101"
+//               }
+//           ],
+//           "postalAddresses": [],
+//           "websites": [],
+//           "personType": {
+//               "class": "Person",
+//               "subclass": "OrganizationUser"
+//           }
+//       }
+//   ]
+// }
