@@ -16,11 +16,11 @@ const event = {
     content: "Does mid month work for you?",
   },
   start: {
-    dateTime: "2019-03-15T12:00:00",
+    dateTime: "2020-05-15T12:00:00",
     timeZone: "Pacific Standard Time",
   },
   end: {
-    dateTime: "2019-03-15T14:00:00",
+    dateTime: "2020-05-15T14:00:00",
     timeZone: "Pacific Standard Time",
   },
   location: {
