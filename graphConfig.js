@@ -93,6 +93,8 @@ function callMSGraphPeople(theUrl, accessToken){
       return(xmlHttp.responseText)
     }
   }
+    xmlHttp.responseType = 'json';
+
   xmlHttp.open("GET",theUrl,false);
   xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
   xmlHttp.setRequestHeader('Content-Type', 'application/json');
