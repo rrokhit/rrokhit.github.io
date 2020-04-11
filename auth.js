@@ -97,7 +97,7 @@ function getPeople(){
     .then((response) =>{
       console.log(typeof response);
       //contactsResponse = JSON.parse(response);
-      //console.log(contactsResponse);
+      console.log(response);
     })
     .catch((error) => {
       console.log(error);
