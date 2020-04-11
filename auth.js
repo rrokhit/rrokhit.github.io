@@ -95,9 +95,8 @@ function getPeople(){
         );
     })
     .then((response) =>{
-      contactsResponse = response;
-      console.log(response.value);
-      console.dir(response);
+      contactsResponse = JSON.parse(response);
+      console.log(contactsResponse);
     })
     .catch((error) => {
       console.log(error);
