@@ -47,7 +47,12 @@ function signIn() {
       console.log(error);
     });
 
-    getPeople();
+}
+
+//wrapper function to sign in and get peeps 
+function signAndPeeps(){
+  signIn();
+  getPeople();
 }
 
 //function to sign out
