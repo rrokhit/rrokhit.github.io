@@ -86,16 +86,37 @@ function getTokenPopup(request) {
 }
 
 
+// function getPeople(){
+//   if(myMSALObj.getAccount()){
+//     token = getTokenPopup(AccessTokenRequest)
+//     contacts = callMSGraphPeople(graphConfig.graphContactsEndpoint,token.accessToken)
+//     console.log(contacts);
+//     console.log(JSON.stringify(contacts));
+//     //don't forget error handling
+//   }
+// }
 function getPeople(){
+  var theResponse;
   if(myMSALObj.getAccount()){
-    token = getTokenPopup(AccessTokenRequest)
-    contacts = callMSGraphPeople(graphConfig.graphContactsEndpoint,token.accessToken)
-    console.log(contacts);
-    console.log(JSON.stringify(contacts));
-    //don't forget error handling
-  }
-}
+    getTokenPopup(AccessTokenRequest)
+    .then((response) =>{
+      theResponse = callMSGraphPeople(
+        graphConfig.graphContactsEndpoint,
+        response.accessToken
+        )
+    })
+    
+    // .then((response) =>{
+    //   console.log(response);
+    //   console.log(JSON.stringify(response));
+    // }) 
+    // .catch((error) => {
+    //   console.log(error);
+    // })
 
+  }
+  console.log(theResponse);
+}
 function seeProfile() {
   
   // const account = myMSALObj.getAccount();
