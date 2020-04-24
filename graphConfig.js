@@ -1,5 +1,6 @@
 var subjectholder = document.getElementById("event-subject"); 
 var clientName = document.getElementById("client-name");
+const thisResponse;
 
 clientName.addEventListener("input",function(event){
   selIndex = docType.selectedIndex;
@@ -91,6 +92,7 @@ function callMSGraphPeople(theUrl, accessToken){
     if(this.readyState == 4 && this.status == 200){
       console.log(xmlHttp.response);
       console.log(typeof JSON.parse(xmlHttp.response));
+      thisResponse = JSON.parse(xmlHttp.response);
       return JSON.parse(xmlHttp.response);
     }
   }
