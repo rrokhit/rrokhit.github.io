@@ -63,7 +63,7 @@ function addAttendee(){
   console.log(selectedName);
   attendee = {
     emailAddress : {
-      address : namesAndEmails.selectedName,
+      address : namesAndEmails[selectedName],
       name : selectedName
     },
     type : "required"
