@@ -90,6 +90,7 @@ function callMSGraphPeople(theUrl, accessToken){
   xmlHttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
       console.log(xmlHttp.response);
+      console.log(typeof JSON.parse(xmlHttp.response));
       return JSON.parse(xmlHttp.response);
     }
   }
