@@ -111,7 +111,7 @@ function datalistEntry() {
   }
   for (let i = 0; i < thisResponse.value.length; i++) {
     var opt = document.createElement("option");
-    opt.appendChild(document.createTextNode(thisResponse.value[i].name));
+    opt.appendChild(document.createTextNode(thisResponse.value[i].displayName));
     opt.value = thisResponse.value[i].displayName;
     datalist.appendChild(opt);
   }
