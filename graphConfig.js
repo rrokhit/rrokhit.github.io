@@ -88,6 +88,7 @@ function processResponse(){
     value = contactResponse.value[i].emailAddresses[0].name;
     namesAndEmails.key = value;
   } 
+  console.log(namesAndEmails);
 }
 
 //used to call seeProfile()
