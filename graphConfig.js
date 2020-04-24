@@ -59,6 +59,7 @@ attendeesForEvent = [];
 //CALL WITH THE ADD BUTTON FOR DATALIST
 function addAttendee(){
   selectedName = datalist.value;
+  console.log(selectedName);
   attendee = {
     emailAddress : {
       address : namesAndEmails.selectedName,
