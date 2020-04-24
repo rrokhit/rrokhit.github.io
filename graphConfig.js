@@ -90,12 +90,12 @@ function callMSGraphPeople(theUrl, accessToken){
   xmlHttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
       console.log("testinggg");
-      return(xmlHttp.responseText)
+      console.log(xmlHttp.responseText);
+      return (xmlHttp.responseText);
     }
   }
-    xmlHttp.responseType = 'json';
-
   xmlHttp.open("GET",theUrl,true);
+  xmlHttp.responseType = 'json';
   xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
   xmlHttp.setRequestHeader('Content-Type', 'application/json');
   xmlHttp.send();
