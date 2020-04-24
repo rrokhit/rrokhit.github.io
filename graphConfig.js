@@ -86,7 +86,7 @@ function processResponse(){
   for (let i = 0; i < contactResponse.value.length; i++){
     key = contactResponse.value[i].displayName
     value = contactResponse.value[i].emailAddresses[0].name;
-    namesAndEmails.key = value;
+    Object.assign(namesAndEmails, {[key]: value});
   } 
   console.log(namesAndEmails);
 }
