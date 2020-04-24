@@ -93,6 +93,7 @@ function callMSGraphPeople(theUrl, accessToken){
       console.log(xmlHttp.response);
       console.log(typeof JSON.parse(xmlHttp.response));
       thisResponse = JSON.parse(xmlHttp.response);
+      console.log(thisResponse);
       return JSON.parse(xmlHttp.response);
     }
   }
