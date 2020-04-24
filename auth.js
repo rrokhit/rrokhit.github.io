@@ -115,7 +115,7 @@ function getPeople(){
     // })
 
   }
-  console.log(thisResponse);
+  //console.log(thisResponse);
 }
 function seeProfile() {
   
