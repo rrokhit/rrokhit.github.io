@@ -51,9 +51,11 @@ function signIn() {
 
 //wrapper function to sign in and get peeps 
 function signAndPeeps(){
-  signIn();
-  getPeople();
-}
+  signIn()
+  .then(() => {
+    getPeople();
+  })
+  }
 
 //function to sign out
 function signOut() {
