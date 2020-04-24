@@ -1,7 +1,8 @@
 var subjectholder = document.getElementById("event-subject"); 
 var clientName = document.getElementById("client-name");
 var datalist = document.getElementById("attendees");
-var thisResponse;
+var body = document.getElementById("event-content");
+var contactResponse;
 
 //subject line for calendar event
 clientName.addEventListener("input",function(event){
@@ -26,11 +27,11 @@ const graphConfig = {
 
 
 //event template 
-const event = JSON.stringify({
-  subject: "Let's go for lunch",
+const event ={
+  subject: subjectholder.value,
   body: {
     contentType: "HTML",
-    content: "Does mid month work for you?",
+    content: body.value,
   },
   start: {
     dateTime: "2020-05-15T12:00:00",
@@ -50,7 +51,42 @@ const event = JSON.stringify({
     }, 
     type: "required"
   }]
-});
+};
+
+//append attendees to this array and then set the event attendees to this value
+attendeesForEvent = [];
+
+//CALL WITH THE ADD BUTTON FOR DATALIST
+function addAttendee(){
+  selectedName = datalist.value;
+  attendee = {
+    emailAddress : {
+      address : namesAndEmails.selectedName,
+      name : selectedName
+    },
+    type : "required"
+  }
+  attendeesForEvent.push(attendee);
+  console.log("Attendee added! Name: " + datalist.value + " Email: " + namesAndEmails.datalist.value);
+  
+  
+}
+
+//key value pairs of names and emails of the contacts
+var namesAndEmails = {
+  // "vembu":"kwvem@mails",
+  // "ronen" : "ronen@mail"
+}
+
+//create key-value pairs to store names and emails
+//this populates namesAndEmails 
+function processResponse(){
+  for (let i = 0; i < contactResponse.value.length; i++){
+    key = contactResponse.value[i].displayName
+    value = contactResponse.value[i].emailAddresses[0].name;
+    namesAndEmails.key = value;
+  } 
+}
 
 //used to call seeProfile()
 function callMSGraph(theUrl, accessToken){
@@ -72,7 +108,7 @@ function callMSGraphPeople(theUrl, accessToken){
     if(this.readyState == 4 && this.status == 200){
       console.log(xmlHttp.response);
       console.log(typeof JSON.parse(xmlHttp.response));
-      thisResponse = JSON.parse(xmlHttp.response);
+      contactResponse = JSON.parse(xmlHttp.response);
       datalistEntry();
       return JSON.parse(xmlHttp.response);
     }
@@ -93,14 +129,18 @@ function callMSGraph2(theUrl, token) {
     }
   };
 
+event.subject = subjectholder.value;
+event.body.content = body.value;
+event.attendees = attendeesForEvent;
+
   xmlHttp.open("POST", theUrl, true);
   xmlHttp.setRequestHeader("Authorization", "Bearer " + token);
   xmlHttp.setRequestHeader("Content-Type", "application/json");
-  xmlHttp.send(event);
+  xmlHttp.send(JSON.stringify(event));
 }
 
 function lookResponse(){
-  console.log(thisResponse);
+  console.log(contactResponse);
 }
 
 //adds user's contacts to datalist options
@@ -109,10 +149,12 @@ function datalistEntry() {
   for (let i = 0; i < len; i++) {
     documents.removeChild(datalist.options[0]);
   }
-  for (let i = 0; i < thisResponse.value.length; i++) {
+  for (let i = 0; i < contactResponse.value.length; i++) {
     var opt = document.createElement("option");
-    opt.appendChild(document.createTextNode(thisResponse.value[i].displayName));
-    opt.value = thisResponse.value[i].displayName;
+    opt.appendChild(document.createTextNode(contactResponse.value[i].displayName));
+    opt.value = contactResponse.value[i].displayName;
     datalist.appendChild(opt);
   }
+  processResponse();
 }
+
