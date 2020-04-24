@@ -89,13 +89,11 @@ function callMSGraphPeople(theUrl, accessToken){
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
-      console.log("testinggg");
       console.log(xmlHttp.response);
-      return (xmlHttp.responseText);
+      return (xmlHttp.response);
     }
   }
   xmlHttp.open("GET",theUrl,true);
-  xmlHttp.responseType = 'json';
   xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
   xmlHttp.setRequestHeader('Content-Type', 'application/json');
   xmlHttp.send();
@@ -110,7 +108,6 @@ function callMSGraph2(theUrl, token) {
   // const client = Client.init(options);
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function () {
-    console.log("Im in the function");
     if (this.readystate == 4 && this.status == 201) {
       console.log(xmlHttp.responseText);
     }
