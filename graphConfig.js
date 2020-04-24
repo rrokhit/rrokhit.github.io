@@ -1,6 +1,7 @@
 var subjectholder = document.getElementById("event-subject"); 
 var clientName = document.getElementById("client-name");
 var datalist = document.getElementById("attendees");
+var datalistValue = document.getElementById("attendees-search")
 var body = document.getElementById("event-content");
 var contactResponse;
 
@@ -58,7 +59,7 @@ attendeesForEvent = [];
 
 //CALL WITH THE ADD BUTTON FOR DATALIST
 function addAttendee(){
-  selectedName = datalist.value;
+  selectedName = datalistValue.value;
   console.log(selectedName);
   attendee = {
     emailAddress : {
@@ -68,7 +69,7 @@ function addAttendee(){
     type : "required"
   }
   attendeesForEvent.push(attendee);
-  console.log("Attendee added! Name: " + datalist.value + " Email: " + namesAndEmails.selectedName);
+  console.log("Attendee added! Name: " + selectedName + " Email: " + namesAndEmails.selectedName);
   
   
 }
