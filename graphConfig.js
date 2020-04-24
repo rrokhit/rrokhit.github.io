@@ -123,3 +123,6 @@ function callMSGraph2(theUrl, token) {
   xmlHttp.send(event);
 }
 
+function lookResponse(){
+  console.log(thisResponse);
+}
