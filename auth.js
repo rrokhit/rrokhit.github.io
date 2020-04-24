@@ -96,7 +96,8 @@ function getPeople(){
     })
     .then((response) =>{
       console.log(response);
-    })
+      console.log(JSON.stringify(response));
+    }) 
     .catch((error) => {
       console.log(error);
     })
