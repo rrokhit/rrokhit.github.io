@@ -67,7 +67,7 @@ function addAttendee(){
     type : "required"
   }
   attendeesForEvent.push(attendee);
-  console.log("Attendee added! Name: " + datalist.value + " Email: " + namesAndEmails.datalist.value);
+  console.log("Attendee added! Name: " + datalist.value + " Email: " + namesAndEmails.selectedName);
   
   
 }
