@@ -1,6 +1,6 @@
 var subjectholder = document.getElementById("event-subject"); 
 var clientName = document.getElementById("client-name");
-const thisResponse;
+var thisResponse;
 
 clientName.addEventListener("input",function(event){
   selIndex = docType.selectedIndex;
