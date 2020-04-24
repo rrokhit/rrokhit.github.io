@@ -135,6 +135,7 @@ function callMSGraph2(theUrl, token) {
 event.subject = subjectholder.value;
 event.body.content = body.value;
 event.attendees = attendeesForEvent;
+console.log(event);
 
   xmlHttp.open("POST", theUrl, true);
   xmlHttp.setRequestHeader("Authorization", "Bearer " + token);
