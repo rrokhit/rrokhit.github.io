@@ -46,6 +46,8 @@ function signIn() {
     .catch((error) => {
       console.log(error);
     });
+
+    getPeople();
 }
 
 //function to sign out
