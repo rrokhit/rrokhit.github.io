@@ -85,21 +85,14 @@ function getTokenPopup(request) {
     });
 }
 
+
 function getPeople(){
   if(myMSALObj.getAccount()){
-    getTokenPopup(AccessTokenRequest)
-    .then((response) =>{
-      callMSGraphPeople(
-        graphConfig.graphContactsEndpoint,
-        response.accessToken
-        ).then((response) =>{
-          console.log(response);
-          console.log(JSON.stringify(response));
-        }) 
-        .catch((error) => {
-          console.log(error);
-        })
-    })
+    token = getTokenPopup(AccessTokenRequest)
+    contacts = callMSGraphPeople(graphConfig.graphContactsEndpoint,token.accessToken)
+    console.log(contacts);
+    console.log(JSON.stringify(contacts));
+    //don't forget error handling
   }
 }
 
