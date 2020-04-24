@@ -69,7 +69,7 @@ function addAttendee(){
     type : "required"
   }
   attendeesForEvent.push(attendee);
-  console.log("Attendee added! Name: " + selectedName + " Email: " + namesAndEmails.selectedName);
+  console.log("Attendee added! Name: " + selectedName + " Email: " + namesAndEmails["selectedName"]);
   
   
 }
