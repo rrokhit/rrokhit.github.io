@@ -90,7 +90,7 @@ function callMSGraphPeople(theUrl, accessToken){
   xmlHttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
       console.log("testinggg");
-      console.log(xmlHttp.responseText);
+      console.log(xmlHttp.response);
       return (xmlHttp.responseText);
     }
   }
@@ -110,6 +110,7 @@ function callMSGraph2(theUrl, token) {
   // const client = Client.init(options);
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function () {
+    console.log("Im in the function");
     if (this.readystate == 4 && this.status == 201) {
       console.log(xmlHttp.responseText);
     }
