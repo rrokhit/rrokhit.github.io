@@ -41,21 +41,13 @@ function signIn() {
       console.log("id_token acquired at: " + new Date().toString());
       console.log(loginResponse);
       console.log(Object.keys(loginResponse));
-     
+      getPeople();
     })
     .catch((error) => {
       console.log(error);
     });
 
 }
-
-//wrapper function to sign in and get peeps 
-function signAndPeeps(){
-  signIn()
-  .then(() => {
-    getPeople();
-  })
-  }
 
 //function to sign out
 function signOut() {
