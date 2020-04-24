@@ -1,8 +1,8 @@
 
 var loginButton = document.getElementById("login-button");
 var contactsResponse;
-var datalist = document.getElementById("attendees");
 
+//initialize MSAL based on AzureAD configuration 
 const msalConfig = {
   auth: {
     clientId: "ae367a9f-8178-4ab8-82e0-381c6e5e4ab0", // this is a fake id
@@ -16,10 +16,11 @@ const msalConfig = {
 };
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
-// const authProvider = new MicrosoftGraph.ImplicitMSALAuthenticationProvider(myMSALObj, AccessTokenRequest.scopes);
+
+//Scopes to login
 const loginRequest = {
   scopes: ["openid", "profile", "User.Read", "Organization.ReadWrite.All"],
-  // prompt : "select_account",
+  
 };
 
 myMSALObj.handleRedirectCallback((error, response) => {
@@ -27,31 +28,13 @@ myMSALObj.handleRedirectCallback((error, response) => {
   console.log(response);
 });
 
-// myMSALObj
-//   .loginRedirect(loginRequest)
-//   .then((loginResponse) => {
-//     //Login Success callback code here
-//     console.log(loginResponse);
-//   })
-//   .catch(function (error) {
-//     console.log(error);
-//   });
+//Scopes to gain access token and get user info
 const AccessTokenRequest = {
   scopes: ["Contacts.Read","Contacts.ReadWrite","User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite","Mail.ReadWrite", "People.Read.All","People.Read","Contacts.Read"],
 };
 
-// myMSALObj
-//   .acquireTokenSilent(tokenRequest)
-//   .then((tokenResponse) => {
-//     // Callback code here
-//     console.log(tokenResponse.accessToken);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-
+//function to sign in
 function signIn() {
-  //console.log(myMSALObj);
   myMSALObj
     .loginPopup(loginRequest)
     .then((loginResponse) => {
@@ -65,10 +48,12 @@ function signIn() {
     });
 }
 
-
+//function to sign out
 function signOut() {
   myMSALObj.logout();
 }
+
+//fuction to aquire token
 function getTokenPopup(request) {
   return myMSALObj.acquireTokenSilent(request)
     .catch(error => {
@@ -85,16 +70,7 @@ function getTokenPopup(request) {
     });
 }
 
-
-// function getPeople(){
-//   if(myMSALObj.getAccount()){
-//     token = getTokenPopup(AccessTokenRequest)
-//     contacts = callMSGraphPeople(graphConfig.graphContactsEndpoint,token.accessToken)
-//     console.log(contacts);
-//     console.log(JSON.stringify(contacts));
-//     //don't forget error handling
-//   }
-// }
+//function to get user's contacts 
 function getPeople(){
   var theResponse;
   if(myMSALObj.getAccount()){
@@ -105,24 +81,12 @@ function getPeople(){
         response.accessToken
         )
     })
-    
-    // .then((response) =>{
-    //   console.log(response);
-    //   console.log(JSON.stringify(response));
-    // }) 
-    // .catch((error) => {
-    //   console.log(error);
-    // })
 
   }
-  //console.log(thisResponse);
 }
+
+//function to see profile info 
 function seeProfile() {
-  
-  // const account = myMSALObj.getAccount();
-  // console.log(account.userName);
-  // console.log(account.accountIdentifier);
-  // console.log(callMSGraph(graphConfig.graphMeEndpoint,))
   
   if (myMSALObj.getAccount()) {
     getTokenPopup(loginRequest)
@@ -144,6 +108,7 @@ function seeProfile() {
   }
 }
 
+//function to add calendar events
 function viewCalendar(){
   if(myMSALObj.getAccount()){
     getTokenPopup(AccessTokenRequest)
@@ -154,19 +119,5 @@ function viewCalendar(){
     }).catch((error) => {
       console.log(error);
     })
-  }
-}
-
-
-function datalistEntry() {
-  var len = datalist.length;
-  for (let i = 0; i < len; i++) {
-    documents.removeChild(datalist.options[0]);
-  }
-  for (let i = 0; i < contactsResponse.value.length; i++) {
-    var opt = document.createElement("option");
-    opt.appendChild(document.createTextNode(contactsResponse.value[i].name));
-    opt.value = contactsResponse.value[i].name;
-    datalist.appendChild(opt);
   }
 }
