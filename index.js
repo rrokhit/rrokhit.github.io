@@ -135,7 +135,7 @@ documents.addEventListener("change", function(event) {
 
 
 function check(id) {
-  document.getElementById(id).checked = true;
+  return document.getElementById(id).checked;
 }
 
 inputvalue.addEventListener("change", function(event) {
