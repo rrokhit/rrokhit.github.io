@@ -5,6 +5,9 @@ var datalistValue = document.getElementById("attendees-search")
 var body = document.getElementById("event-content");
 var contactResponse;
 
+
+
+
 //subject line for calendar event
 clientName.addEventListener("input",function(event){
   selIndex = docType.selectedIndex;
@@ -120,6 +123,47 @@ function callMSGraphPeople(theUrl, accessToken){
   xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
   xmlHttp.setRequestHeader('Content-Type', 'application/json');
   xmlHttp.send();
+
+
+}
+
+
+//
+function submitButton(theUrl, token) {
+  event.subject = subjectholder.value;
+  event.body.content = body.value;
+  event.attendees = attendeesForEvent;
+  event.start.dateTime = finalString;
+  event.end.dateTime = finalString;
+  console.log(event);
+
+  callMSGraph2(theUrl, token);
+
+  if (check("2-days")) {
+    event.start.dateTime = realDateCalculation(-2, subDateString);
+    event.end.dateTime = realDateCalculation(-2, subDateString);
+
+    callMSGraph2(theUrl, token);
+  }
+  if (check("7-days")) {
+    event.start.dateTime = realDateCalculation(-7, subDateString);
+    event.end.dateTime = realDateCalculation(-7, subDateString);
+
+    callMSGraph2(theUrl, token);
+  }
+  if (check("14-days")) {
+    event.start.dateTime = realDateCalculation(-14, subDateString);
+    event.end.dateTime = realDateCalculation(-14, subDateString);
+
+    callMSGraph2(theUrl, token);
+  }
+
+  if (check("21-days")) {
+    event.start.dateTime = realDateCalculation(-14, subDateString);
+    event.end.dateTime = realDateCalculation(-14, subDateString);
+
+    callMSGraph2(theUrl, token);
+  }
 }
 
 //used to create calendar events 
@@ -132,17 +176,15 @@ function callMSGraph2(theUrl, token) {
     }
   };
 
-event.subject = subjectholder.value;
-event.body.content = body.value;
-event.attendees = attendeesForEvent;
-event.start.dateTime = finalString;
-event.end.dateTime = finalString;
-console.log(event);
+
 
   xmlHttp.open("POST", theUrl, true);
   xmlHttp.setRequestHeader("Authorization", "Bearer " + token);
   xmlHttp.setRequestHeader("Content-Type", "application/json");
   xmlHttp.send(JSON.stringify(event));
+
+
+
 }
 
 function lookResponse(){
