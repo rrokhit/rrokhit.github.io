@@ -128,8 +128,8 @@ function callMSGraphPeople(theUrl, accessToken){
 }
 
 
-//
-function submitButton(theUrl, token) {
+//Function that sends the event based on the reminder settings
+function submitButton() {
   event.subject = subjectholder.value;
   event.body.content = body.value;
   event.attendees = attendeesForEvent;
@@ -137,32 +137,32 @@ function submitButton(theUrl, token) {
   event.end.dateTime = finalString;
   console.log(event);
 
-  callMSGraph2(theUrl, token);
+  viewCalendar();
 
   if (check("2-days")) {
     event.start.dateTime = realDateCalculation(-2, subDateString);
     event.end.dateTime = realDateCalculation(-2, subDateString);
 
-    callMSGraph2(theUrl, token);
+    viewCalendar();
   }
   if (check("7-days")) {
     event.start.dateTime = realDateCalculation(-7, subDateString);
     event.end.dateTime = realDateCalculation(-7, subDateString);
 
-    callMSGraph2(theUrl, token);
+    viewCalendar();
   }
   if (check("14-days")) {
     event.start.dateTime = realDateCalculation(-14, subDateString);
     event.end.dateTime = realDateCalculation(-14, subDateString);
 
-    callMSGraph2(theUrl, token);
+    viewCalendar();
   }
 
   if (check("21-days")) {
     event.start.dateTime = realDateCalculation(-14, subDateString);
     event.end.dateTime = realDateCalculation(-14, subDateString);
 
-    callMSGraph2(theUrl, token);
+    viewCalendar();
   }
 }
 
