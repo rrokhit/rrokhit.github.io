@@ -86,28 +86,6 @@ function getPeople(){
   }
 }
 
-//function to see profile info 
-function seeProfile() {
-  
-  if (myMSALObj.getAccount()) {
-    getTokenPopup(loginRequest)
-      .then((response) => {
-        console.log(response.accessToken);
-        callMSGraph(
-          graphConfig.graphMeEndpoint,
-          response.accessToken
-        );
-
-      }).then((response) =>{
-        var text = document.createElement('P');
-        text.innerHTML = response;
-        document.body.appendChild(text);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-}
 
 //function to add calendar events
 function viewCalendar(){
