@@ -7,6 +7,8 @@ var dateName = document.getElementById("date-name");
 var date;
 var docType;
 var finalString;
+var subDate = document.getElementById("due-date");
+var subDateString;
 
 //Document list for IRB documents
 documentListIRB = [
@@ -146,11 +148,17 @@ function addDays(date, days) {
   return result;
 }
 
-// function dateConvert(){
-//   for(let x =0;x<date.length;x++){
-//     date[x] = parseInt(date[x]);
-//   }
-// }
+function dateConvert(string){
+  string = string.split("-");
+  for(let x =0;x<string.length;x++){
+    if(string[x]<10){
+      string[x] = "0"+string[x];
+    }
+    string[x] = ""+string[x];
+  }
+  string = string.join("-");
+  return string;
+}
 
 //dateTime: "2020-05-15T12:00:00",
 //20 days = 1728000000 milliseconds
@@ -172,6 +180,7 @@ function dateCalculation(){
     finalString = realDateCalculation(-10);
     console.log(finalString);
   }
+  subDate.value = dateConvert(subDateString);
 }
 
 function realDateCalculation(interval){
@@ -180,15 +189,11 @@ function realDateCalculation(interval){
   console.log(inputDate);
   var outputDate = addDays(inputDate,interval);
   console.log(outputDate);
-  var finalString = outputDate.getFullYear() + "-" + (outputDate.getMonth()+1) + "-" + (outputDate.getDate()) + "T12:00:00";
+  subDateString = outputDate.getFullYear() + "-" + (outputDate.getMonth()+1) + "-" + (outputDate.getDate()); 
+  var finalString = subDateString + "T12:00:00";
   return(finalString);
 }
 
-months = [""]
-
-//date: date
-//document type: docType
-//Calculate due date of...
 
 valuesIRB = {
   "Disclosure (IAD)": 20,
