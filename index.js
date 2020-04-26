@@ -133,6 +133,11 @@ documents.addEventListener("change", function(event) {
   
 });
 
+
+function check(id) {
+  document.getElementById(id).checked = true;
+}
+
 inputvalue.addEventListener("change", function(event) {
   date = inputvalue.value;
   //date = date.split("-");
@@ -167,24 +172,54 @@ function dateCalculation(){
   if(docType == "Disclosure (IAD)"){
     //for disclosure IAD, it is due 20 days before hearing 
     //inputDate is the date of hearing
-    finalString = realDateCalculation(-20);
+    finalString = realDateCalculation(-20, date);
     console.log(finalString);
   }else if(docType == "Notice of Appeal (IAD)"){
-    //notice of appeal is filed 30 days after refusal
+    //notice of appeal must be filed 30 days after refusal
     //input date is date of refusal 
-    finalString = realDateCalculation(30);
+    finalString = realDateCalculation(30, date);
     console.log(finalString);
   }else if(docType == "Disclosure (RPD)"){
     //disclosure RPD is due 10 days before hearing
     //input date is date of hearing 
-    finalString = realDateCalculation(-10);
+    finalString = realDateCalculation(-10, date);
+    console.log(finalString);
+  }else if(docType == "Notice of Appeal (RAD)"){
+    //notice of appeal RAD must be filed 15 days after refusal
+    //input date is date of refusal 
+    finalString = realDateCalculation(15, date);
+    console.log(finalString);
+  }else if(docType == "Appeal Record"){
+    //idk what the appeal record is tbh
+    //i think input date is date of refusal
+    finalString = realDateCalculation(30, date);
+    console.log(finalString);
+  }else if(docType == "Application for Leave and Judicial Review (Domestic)"){
+    //AFLJR(domestic) is due 15 days after refusal
+    //input date is date of refusal 
+    finalString = realDateCalculation(15, date);
+    console.log(finalString);
+  }else if(docType == "Application for Leave and Judicial Review (International)"){
+    //AFLJR (intl) is due 60 days after refusal
+    //input date is date of refusal
+    finalString = realDateCalculation(60, date);
+    console.log(finalString);
+  }else if(docType == "Applicant's Record"){
+    //Applicants record is due 30 days after rule 9 received
+    //input date is date of rule 9 received
+    finalString = realDateCalculation(30, date);
+    console.log(finalString);
+  }else if(docType == "Reply Memorandum"){
+    //reply memo is sent 10 days after FC memo
+    // input date is when FC memo is received
+    finalString = realDateCalculation(10,date);
     console.log(finalString);
   }
   subDate.value = dateConvert(subDateString);
 }
 
-function realDateCalculation(interval){
-  var inputDate = new Date(date);
+function realDateCalculation(interval, funcDate){
+  var inputDate = new Date(funcDate);
   inputDate.setDate(inputDate.getDate()+1);
   console.log(inputDate);
   var outputDate = addDays(inputDate,interval);
@@ -202,3 +237,12 @@ valuesIRB = {
   "Notice of Appeal (RAD)": 15
 };
 
+documentListFC = [
+  "Please Select:",
+  "Application for Leave and Judicial Review (Domestic)",
+  "Application for Leave and Judicial Review (International)",
+  "Applicant's Record",
+  "Affidavits and Memorandum",
+  "Reply Memorandum",
+  "Book of Authorities"
+];
