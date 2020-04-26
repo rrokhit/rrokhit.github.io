@@ -225,11 +225,11 @@ function realDateCalculation(interval, funcDate){
   var outputDate = addDays(inputDate,interval);
   console.log(outputDate);
   subDateString = outputDate.getFullYear() + "-" + (outputDate.getMonth()+1) + "-" + (outputDate.getDate()); 
-  var finalString = subDateString + "T12:00:00";
+  finalString = subDateString + "T12:00:00";
   return(finalString);
 }
 
-
+// date : "2020-03-14"
 valuesIRB = {
   "Disclosure (IAD)": 20,
   "Notice of Appeal (IAD)": 30,
