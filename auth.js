@@ -114,7 +114,7 @@ function viewCalendar(){
   if(myMSALObj.getAccount()){
     getTokenPopup(AccessTokenRequest)
     .then((response) =>{
-      submitButton(
+      callMSGraph2(
         graphConfig.graphCalendarEndpointOne, response.accessToken
       )
     }).catch((error) => {
