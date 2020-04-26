@@ -135,6 +135,8 @@ function callMSGraph2(theUrl, token) {
 event.subject = subjectholder.value;
 event.body.content = body.value;
 event.attendees = attendeesForEvent;
+event.start.dateTime = finalString;
+event.end.dateTime = finalString;
 console.log(event);
 
   xmlHttp.open("POST", theUrl, true);
