@@ -1,12 +1,12 @@
 //Guap Software
 var inputvalue = document.getElementById("date-selector");
 var radioResponse = document.getElementsByName("initial-menu");
-// var getDivision = document.getElementByName("initial-menu").value;
 var isChecked = document.querySelector("input[name=initial-menu]:checked");
 var documents = document.getElementById("documents");
 var dateName = document.getElementById("date-name");
 var date;
 var docType;
+var finalString;
 
 //Document list for IRB documents
 documentListIRB = [
@@ -128,13 +128,63 @@ documents.addEventListener("change", function(event) {
   }else if(docType == "Appeal Record"){
     appealRecord();
   }
+  
 });
 
 inputvalue.addEventListener("change", function(event) {
   date = inputvalue.value;
+  //date = date.split("-");
+  //dateConvert();
   console.log(date);
+  dateCalculation();
   // document.getElementById("date-form").submit();
 });
+
+function addDays(date, days) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+}
+
+// function dateConvert(){
+//   for(let x =0;x<date.length;x++){
+//     date[x] = parseInt(date[x]);
+//   }
+// }
+
+//dateTime: "2020-05-15T12:00:00",
+//20 days = 1728000000 milliseconds
+//30 days = 2592000000 milliseconds
+function dateCalculation(){
+  if(docType == "Disclosure (IAD)"){
+    //for disclosure IAD, it is due 20 days before hearing 
+    //inputDate is the date of hearing
+    finalString = realDateCalculation(-20);
+    console.log(finalString);
+  }else if(docType == "Notice of Appeal (IAD)"){
+    //notice of appeal is filed 30 days after refusal
+    //input date is date of refusal 
+    finalString = realDateCalculation(30);
+    console.log(finalString);
+  }else if(docType == "Disclosure (RPD)"){
+    //disclosure RPD is due 10 days before hearing
+    //input date is date of hearing 
+    finalString = realDateCalculation(-10);
+    console.log(finalString);
+  }
+}
+
+function realDateCalculation(interval){
+  var inputDate = new Date(date);
+  inputDate.setDate(inputDate.getDate()+1);
+  console.log(inputDate);
+  var outputDate = addDays(inputDate,interval);
+  console.log(outputDate);
+  var finalString = outputDate.getFullYear() + "-" + (outputDate.getMonth()+1) + "-" + (outputDate.getDate()) + "T12:00:00";
+  return(finalString);
+}
+
+months = [""]
 
 //date: date
 //document type: docType
