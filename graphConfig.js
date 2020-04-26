@@ -33,6 +33,7 @@ const graphConfig = {
 //event template 
 const event ={
   subject: subjectholder.value,
+  reminderMinutesBeforeStart: "",
   body: {
     contentType: "HTML",
     content: body.value,
@@ -129,7 +130,7 @@ function callMSGraphPeople(theUrl, accessToken){
 
 
 //Function that sends the event based on the reminder settings
-function submitButton() {
+function submitButton(theUrl, token) {
   event.subject = subjectholder.value;
   event.body.content = body.value;
   event.attendees = attendeesForEvent;
@@ -137,33 +138,39 @@ function submitButton() {
   event.end.dateTime = finalString;
   console.log(event);
 
-  viewCalendar();
-
   if (check("2-days")) {
-    event.start.dateTime = realDateCalculation(-2, subDateString);
-    event.end.dateTime = realDateCalculation(-2, subDateString);
+    // event.start.dateTime = realDateCalculation(-2, subDateString);
+    // event.end.dateTime = realDateCalculation(-2, subDateString);
+    event.isReminderOn = true;
+    event.reminderMinutesBeforeStart = 2880;
 
-    viewCalendar();
+    // viewCalendar();
   }
   if (check("7-days")) {
-    event.start.dateTime = realDateCalculation(-7, subDateString);
-    event.end.dateTime = realDateCalculation(-7, subDateString);
-
-    viewCalendar();
+    // event.start.dateTime = realDateCalculation(-7, subDateString);
+    // event.end.dateTime = realDateCalculation(-7, subDateString);
+    event.isReminderOn = true;
+    event.reminderMinutesBeforeStart = 10080;
+    // viewCalendar();
   }
   if (check("14-days")) {
-    event.start.dateTime = realDateCalculation(-14, subDateString);
-    event.end.dateTime = realDateCalculation(-14, subDateString);
-
-    viewCalendar();
+    // event.start.dateTime = realDateCalculation(-14, subDateString);
+    // event.end.dateTime = realDateCalculation(-14, subDateString);
+    event.isReminderOn = true;
+    event.reminderMinutesBeforeStart = 20160;
+    // viewCalendar();
   }
 
   if (check("21-days")) {
-    event.start.dateTime = realDateCalculation(-14, subDateString);
-    event.end.dateTime = realDateCalculation(-14, subDateString);
-
-    viewCalendar();
+    // event.start.dateTime = realDateCalculation(-21, subDateString);
+    // event.end.dateTime = realDateCalculation(-21, subDateString);
+    event.isReminderOn = true;
+    event.reminderMinutesBeforeStart = 30240;
+    // viewCalendar();
   }
+
+  callMSGraph2(theUrl,token);
+
 }
 
 //used to create calendar events 
