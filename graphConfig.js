@@ -59,7 +59,21 @@ const event ={
 };
 
 //append attendees to this array and then set the event attendees to this value
-attendeesForEvent = [];
+attendeesForEvent = [
+  //this is the default attendee for each event
+//   {emailAddress: {
+//   address : "cdeslosges@desloges.ca",
+//   name: "Chantal Desloges"
+// },
+// type: "required"
+// },
+  {emailAddress: {
+  address : "r.rokhit11@gmail.com",
+  name: "Ronen LeRokh"
+},
+type: "required"
+}
+];
 
 //CALL WITH THE ADD BUTTON FOR DATALIST
 function addAttendee(){
