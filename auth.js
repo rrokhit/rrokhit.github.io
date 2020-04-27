@@ -49,6 +49,18 @@ function signIn() {
 
 }
 
+loginButton.addEventListener("click", function(event){
+  if(!myMSALObj.getAccount()){
+    //this means that the user is not logged in
+    signIn();
+    loginButton.value = "Log out";
+  }else{
+    //this means user is already logged in
+    signOut();
+    loginButton.value = "Login";
+  }
+})
+
 //function to sign out
 function signOut() {
   myMSALObj.logout();
