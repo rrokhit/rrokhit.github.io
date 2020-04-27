@@ -1,8 +1,7 @@
-
 var loginButton = document.getElementById("login-button");
 var contactsResponse;
 
-//initialize MSAL based on AzureAD configuration 
+//initialize MSAL based on AzureAD configuration
 const msalConfig = {
   auth: {
     clientId: "ae367a9f-8178-4ab8-82e0-381c6e5e4ab0", // this is a fake id
@@ -20,7 +19,6 @@ const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 //Scopes to login
 const loginRequest = {
   scopes: ["openid", "profile", "User.Read", "Organization.ReadWrite.All"],
-  
 };
 
 myMSALObj.handleRedirectCallback((error, response) => {
@@ -30,7 +28,17 @@ myMSALObj.handleRedirectCallback((error, response) => {
 
 //Scopes to gain access token and get user info
 const AccessTokenRequest = {
-  scopes: ["Contacts.Read","Contacts.ReadWrite","User.Read.All", "Group.ReadWrite.All", "Calendars.ReadWrite","Mail.ReadWrite", "People.Read.All","People.Read","Contacts.Read"],
+  scopes: [
+    "Contacts.Read",
+    "Contacts.ReadWrite",
+    "User.Read.All",
+    "Group.ReadWrite.All",
+    "Calendars.ReadWrite",
+    "Mail.ReadWrite",
+    "People.Read.All",
+    "People.Read",
+    "Contacts.Read",
+  ],
 };
 
 //function to sign in
@@ -46,20 +54,19 @@ function signIn() {
     .catch((error) => {
       console.log(error);
     });
-
 }
 
-loginButton.addEventListener("click", function(event){
-  if(!myMSALObj.getAccount()){
+loginButton.addEventListener("click", function (event) {
+  if (!myMSALObj.getAccount()) {
     //this means that the user is not logged in
     signIn();
-    loginButton.value = "Log out";
-  }else{
+    loginButton.innerHTML = "Log out";
+  } else {
     //this means user is already logged in
     signOut();
-    loginButton.value = "Login";
+    loginButton.innerHTML = "Login to Outlook";
   }
-})
+});
 
 //function to sign out
 function signOut() {
@@ -68,47 +75,47 @@ function signOut() {
 
 //fuction to aquire token
 function getTokenPopup(request) {
-  return myMSALObj.acquireTokenSilent(request)
-    .catch(error => {
-      console.log(error);
-      console.log("silent token acquisition fails. acquiring token using popup");
+  return myMSALObj.acquireTokenSilent(request).catch((error) => {
+    console.log(error);
+    console.log("silent token acquisition fails. acquiring token using popup");
 
-      // fallback to interaction when silent call fails
-        return myMSALObj.acquireTokenPopup(request)
-          .then(tokenResponse => {
-            return tokenResponse;
-          }).catch(error => {
-            console.log(error);
-          });
-    });
+    // fallback to interaction when silent call fails
+    return myMSALObj
+      .acquireTokenPopup(request)
+      .then((tokenResponse) => {
+        return tokenResponse;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
 }
 
-//function to get user's contacts 
-function getPeople(){
+//function to get user's contacts
+function getPeople() {
   var theResponse;
-  if(myMSALObj.getAccount()){
-    getTokenPopup(AccessTokenRequest)
-    .then((response) =>{
+  if (myMSALObj.getAccount()) {
+    getTokenPopup(AccessTokenRequest).then((response) => {
       theResponse = callMSGraphPeople(
         graphConfig.graphContactsEndpoint,
         response.accessToken
-        )
-    })
-
+      );
+    });
   }
 }
 
-
 //function to add calendar events
-function viewCalendar(){
-  if(myMSALObj.getAccount()){
+function viewCalendar() {
+  if (myMSALObj.getAccount()) {
     getTokenPopup(AccessTokenRequest)
-    .then((response) =>{
-      submitButton(
-        graphConfig.graphCalendarEndpointOne, response.accessToken
-      )
-    }).catch((error) => {
-      console.log(error);
-    })
+      .then((response) => {
+        submitButton(
+          graphConfig.graphCalendarEndpointOne,
+          response.accessToken
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
