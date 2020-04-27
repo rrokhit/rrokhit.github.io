@@ -1,0 +1,46 @@
+
+body {
+    background-color:#dadeee;
+    font-family:Helvetica;
+    font-size:16px;
+    padding:20px;
+    margin: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    }
+table{
+    border-collapse: separate;
+    /* border-spacing: 50px 0; */
+}
+
+.column1{
+   column-width: 473px; 
+}
+
+.centered {
+    position: absolute;
+  bottom: 450px;
+  left: 75px;
+  font-family: Helvetica;
+  font-size: 25px;   
+}
+
+.button {
+    background-color: #0468b0;
+    color: white;
+    border-radius: 12px;
+    padding: 12px 30px;
+
+}
+
+button:hover{
+    background-color: #f79258;
+    cursor: pointer;
+}
+    
+    /* orange: #eb9234 */
+    /* beigish : #cfc1a7 */
+    /* blueSteel : #c5c8d6 */
+    /* cream : #ebdebe */
+    /* alsoSteel: #c7c5c1; */
+    /* ebedebe in the sun: #e8c690 */
