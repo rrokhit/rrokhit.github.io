@@ -4,7 +4,6 @@ var datalist = document.getElementById("attendees");
 var datalistValue = document.getElementById("attendees-search");
 var body = document.getElementById("event-content");
 var contactResponse;
-import swal from 'sweetalert';
 
 //subject line for calendar event
 clientName.addEventListener("input", function (event) {
@@ -150,7 +149,6 @@ function submitButton(theUrl, token) {
   event.start.dateTime = finalString;
   event.end.dateTime = finalString;
   console.log(event);
-  swal(event);
 
   if (check("2-days")) {
     // event.start.dateTime = realDateCalculation(-2, subDateString);
