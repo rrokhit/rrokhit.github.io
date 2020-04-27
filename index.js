@@ -84,15 +84,19 @@ function disclosure() {
 }
 
 function noticeOfAppeal() {
-  dateName.innerHTML = "Date received: ";
+  dateName.innerHTML = "Date refusal received: ";
 }
 
 function applicationFLJR() {
-  dateName.innerHTML = "Date received ";
+  dateName.innerHTML = "Date refusal received ";
 }
 
-function applicationRecord() {
-  dateName.innerHTML = "Date AFLJR sent/Rule 9 received: ";
+function applicationRecordNoNine() {
+  dateName.innerHTML = "Date AFLJR sent: ";
+}
+
+function applicationRecordWithNine(){
+  dateName.innerHTML = "Date Rule 9 received: ";
 }
 
 function replyMemo() {
@@ -120,9 +124,11 @@ documents.addEventListener("change", function(event) {
     docType == "Application for Leave and Judicial Review (International)"
   ) {
     applicationFLJR();
-  } else if (docType == "Applicant's Record") {
-    applicationRecord();
-  } else if (
+  } else if (docType == "Applicant's Record (No Rule 9)") {
+    applicationRecordNoNine();
+  } else if(docType == "Applicant's Record (With Rule 9)"){
+    applicationRecordWithNine();
+  }else if (
     docType == "Reply Memorandum" ||
     docType == "Affidavits and Memorandum"
   ) {
@@ -192,7 +198,7 @@ function dateCalculation(){
   }else if(docType == "Appeal Record"){
     //idk what the appeal record is tbh
     //i think input date is date of refusal
-    finalString = realDateCalculation(30, date);
+    finalString = realDateCalculation(180,date);
     console.log(finalString);
   }else if(docType == "Application for Leave and Judicial Review (Domestic)"){
     //AFLJR(domestic) is due 15 days after refusal
@@ -204,10 +210,15 @@ function dateCalculation(){
     //input date is date of refusal
     finalString = realDateCalculation(60, date);
     console.log(finalString);
-  }else if(docType == "Applicant's Record"){
-    //Applicants record is due 30 days after rule 9 received
-    //input date is date of rule 9 received
+  }else if(docType == "Applicant's Record (No Rule 9)"){
+    //Applicants record is due 30 days after AFLJR is sent
+    //input date is date AFLJR sent
     finalString = realDateCalculation(30, date);
+    console.log(finalString);
+  }else if(docType == "Applicant's Record (With Rule 9)"){
+    //Applicant's record is due 40 days after rule 9 received
+    //input date is date rule 9 received
+    finalString = realDateCalculation(40,date);
     console.log(finalString);
   }else if(docType == "Reply Memorandum"){
     //reply memo is sent 10 days after FC memo
@@ -224,6 +235,12 @@ function realDateCalculation(interval, funcDate){
   console.log(inputDate);
   var outputDate = addDays(inputDate,interval);
   console.log(outputDate);
+  if(outputDate.getDay() == 0){
+    outputDate = addDays(outputDate, 1);
+  }else if(outputDate.getDay() == 6){
+    outputDate = addDays(outputDate,-1);
+  }
+  console.log("after checking fo weekend: " +outputDate);
   subDateString = outputDate.getFullYear() + "-" + (outputDate.getMonth()+1) + "-" + (outputDate.getDate()); 
   finalString = subDateString + "T12:00:00";
   return(finalString);
@@ -241,8 +258,9 @@ documentListFC = [
   "Please Select:",
   "Application for Leave and Judicial Review (Domestic)",
   "Application for Leave and Judicial Review (International)",
-  "Applicant's Record",
+  "Applicant's Record (No Rule 9)",
+  "Applicant's Record (With Rule 9)",
   "Affidavits and Memorandum",
-  "Reply Memorandum",
-  "Book of Authorities"
+  "Reply Memorandum"
+  // "Book of Authorities"
 ];
