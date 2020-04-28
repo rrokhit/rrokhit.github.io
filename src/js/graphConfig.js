@@ -13,7 +13,17 @@ clientName.addEventListener("input", function (event) {
   console.log(clientName.value);
   var subjectText = clientName.value + " " + docType;
   subjectholder.value = subjectText;
+  sidebarSubject.innerHTML=subjectholder.value;
+
 });
+
+subjectholder.addEventListener("input",function(event){
+sidebarSubject.innerHTML=subjectholder.value;
+});
+
+body.addEventListener("input",function(){
+  sidebarContent.innerHTML=body.value;
+})
 
 //endpoints for various API calls
 const graphConfig = {
@@ -92,7 +102,20 @@ function addAttendee() {
       " Email: " +
       namesAndEmails[selectedName]
   );
+
+  var tag = document.createElement("p");
+  var text = document.createTextNode(selectedName+": "+namesAndEmails[selectedName]+"\n");
+  tag.appendChild(text);
+  sidebarAttendees.appendChild(tag);
+ 
 }
+
+/*
+Attendees for sidebar should look like this:
+Attendees:
+Ronen: rrok@email
+Vembu: vembu@email
+*/
 
 //key value pairs of names and emails of the contacts
 var namesAndEmails = {
