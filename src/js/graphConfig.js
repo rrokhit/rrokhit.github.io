@@ -119,7 +119,7 @@ function callMSGraph(theUrl, accessToken) {
       profileResponse = JSON.parse(xmlHttp.response);
       console.log(xmlHttp.response);
       console.log(JSON.parse(xmlHttp.response));
-      processResponse();
+      processProfile();
       return JSON.parse(xmlHttp.response);
     }
   };
