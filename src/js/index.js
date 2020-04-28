@@ -9,6 +9,10 @@ var docType;
 var finalString;
 var subDate = document.getElementById("due-date");
 var subDateString;
+var sidebarSubject = document.getElementById("sidebar-subject");
+var sidebarDate = document.getElementById("sidebar-date");
+var sidebarAttendees = document.getElementById("sidebar-attendees");
+var sidebarContent = document.getElementById("sidebar-content");
 
 
 //Document list for IRB documents
