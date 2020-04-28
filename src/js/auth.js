@@ -9,7 +9,7 @@ const msalConfig = {
   auth: {
     clientId: "ae367a9f-8178-4ab8-82e0-381c6e5e4ab0", // this is a fake id
     authority: "https://login.microsoftonline.com/common/",
-    redirectUri: "https://rrokhit.github.io/",
+    redirectUri: "https://rrokhit.github.io/src/",
   },
   cache: {
     cacheLocation: "sessionStorage", // This configures where your cache will be stored
