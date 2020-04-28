@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #ffb997;
   font-family: Helvetica;
   font-size: 16px;
   padding: 20px;
@@ -12,7 +12,7 @@ table {
 }
 
 hr {
-  background-color: black;
+  background-color: #581845;
   height: 3px;
   width: 245px;
   border: none;
@@ -24,9 +24,11 @@ hr {
   top: 0;
 }
 
+/* blue : #63a8bf */
+
 .tablem-col-2 {
   padding-top: 130px;
-  background-color: gainsboro;
+  background-color: #63a8bf;
   position: absolute;
   bottom: 0;
   top: 80px;
@@ -51,14 +53,16 @@ hr {
 }
 
 .button {
-  background-color: #0468b0;
+  background-color: #63a8bf;
   color: white;
   border-radius: 12px;
   padding: 12px 30px;
+  border-color: #581845;
+  border-width: 2.5px;
 }
 
 button:hover {
-  background-color: #f79258;
+  background-color: #581845;
   cursor: pointer;
 }
 
@@ -73,7 +77,7 @@ button:hover {
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: #ff1100;
+  background-color: #581845;
   margin: 0 auto;
   text-align: center;
   width: 100%;
@@ -98,35 +102,41 @@ button:hover {
   position: absolute;
   top: 80px;
   left: 0px;
-  background-color: #f0d9d8;
+  background-color: #900c3f;
   margin: 0 auto;
   text-align: left;
   width: 100%;
   height: 50 px;
   font: Helvetica;
   font-size: 14px;
-  color: black;
+  color: white;
   font-stretch: condensed;
   box-shadow: 0 6px 10px -6px black;
 }
 
-#banner_contents2 {
+#banner_content2 {
   width: 75%;
   font: Helvetica;
   font-size: 30 px;
   font-weight: bold;
+  color: white;
   text-decoration-color: white;
 }
 
 #banner2-table {
   width: 70%;
-  color: black;
+  color: white;
+  text-align: right;
 }
 #login-button {
-  background-color: #0468b0;
+  background-color: #63a8bf;
   color: white;
   border-radius: 20px;
   padding: 10px 15px;
+}
+#login-button:hover{
+  background-color: #581845;
+  cursor: pointer;
 }
 .event-subject {
   font-size: larger;
@@ -175,16 +185,16 @@ button:hover {
   text-align: center;
   align-content: center;
   color: white;
-  background-color: coral;
+  background-color: #63a8bf;
   border-radius: 100px;
 }
 
-
+ 
 .menu-label:hover input ~ .menu-span {
-  background-color: #ccc;
+  background-color: #581845;
   cursor: pointer;
 }
 .menu-label input:checked ~ .menu-span {
-  background-color: #2196F3;
+  background-color: #900c3f;
 }
 
