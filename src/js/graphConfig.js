@@ -4,6 +4,7 @@ var datalist = document.getElementById("attendees");
 var datalistValue = document.getElementById("attendees-search");
 var body = document.getElementById("event-content");
 var contactResponse;
+var profileResponse;
 
 //subject line for calendar event
 clientName.addEventListener("input", function (event) {
@@ -16,7 +17,7 @@ clientName.addEventListener("input", function (event) {
 
 //endpoints for various API calls
 const graphConfig = {
-  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
+  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me/profile",
   graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages",
   graphCalendarEndpointOne:
     "https://graph.microsoft.com/v1.0/me/calendar/events",
@@ -115,7 +116,11 @@ function callMSGraph(theUrl, accessToken) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      return xmlHttp.responseText;
+      profileResponse = JSON.parse(xmlHttp.response);
+      console.log(xmlHttp.response);
+      console.log(JSON.parse(xmlHttp.response));
+      processResponse();
+      return JSON.parse(xmlHttp.response);
     }
   };
   xmlHttp.open("GET", theUrl, true);
