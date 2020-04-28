@@ -1,0 +1,115 @@
+	• Actual tool
+		○ Once person logs in, all their 'people' are loaded into an array(or object)
+			§ 'person' are objects with a property object called scoredEmailAdresses with a property called address which is their email-address 
+			§ They also have a display name, for which we will search for 
+		○ We only need the person's name and their email address, so we will create an object containing the person's name as a key and their email as a value 
+			§ Var obj = {};
+			§ (for let x of response.value){
+			§ Name = x.displayName;
+			§ Obj.name = x.scoredEmailAddress[0].address; 
+			§ }
+		○ If a user inputs a string into the search bar, it will search the Object.keys(obj) array for display names and display those people as some sort of clickable button
+		○ When button is clicked, that key and value (name and email) will be appended to the event object under attendee, email address and name
+
+RESPONSE -> 
+{
+    "value": [
+        {
+        "displayName" : "Vembu RM"
+        "scoredEmailAddress" : [
+            "address" : "kwvembu@gmail.com",
+            "relevanceScore" : 30.0
+        ]
+    },
+    {
+           "displayName" : "Ronen R"
+        "scoredEmailAddress" : [
+            "address" : "rrokhit@gmail.com",
+            "relevanceScore" : 30.0
+        ]
+    }
+
+    ]
+
+}
+END RESPONSE
+
+MAKE AN ARRAY OF names
+var names = []
+for x in obj
+append name 
+
+
+if <input> in list{
+    show that name(clickable)
+}
+
+when clicked, name and email are appended to event object
+
+old function:
+function getPeople(){
+  if(myMSALObj.getAccount()){
+    getTokenPopup(AccessTokenRequest)
+    .then((response) =>{
+      callMSGraphPeople(
+        graphConfig.graphContactsEndpoint,
+        response.accessToken
+        ).then((response) =>{
+          console.log(response);
+          console.log(JSON.stringify(response));
+        }) 
+        .catch((error) => {
+          console.log(error);
+        })
+    })
+
+  }
+}
+
+new function:
+function getPeople(){
+  if(myMSALObj.getAccount()){
+    token = getTokenPopup(AccessTokenRequest)
+    contacts = callMSGraphPeople(graphConfig.graphContactsEndpoint,token.accessToken)
+    console.log(contacts);
+    console.log(JSON.stringify(contacts));
+    //     .catch((error) => {
+    //       console.log(error);
+    //     })
+    // })
+  }
+}
+
+WEEKEND CONFIG
+if due on saturday make it for friday
+if due on sunday make it for monday 
+
+there is a christmas recess
+there are other holdiay things to 
+
+Ask mitch:
+affadavits
+book of authroities 
+holiday recesses 
+
+FEATURE REQUIREMENTS:
+after event is submitted, a summary will be provided and the form will be cleared
+
+DESIGN REQUIREMENTS
+login button is clear that you have to complete it first
+make button reactions, especially 'Add attendee'
+choose sidebar
+add title/header
+make radio buttons cool 
+make content neater
+doctype and content should look like titles rather than labels 
+
+
+
+UX REQUIREMENTS:
+remove attendee button
+add error messages for invalid input 
+
+BUGS:
+make sure subject text changes dynamically
+subject won't work in client name entered before document type

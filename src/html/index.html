@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diarization Tool</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1 id="header">Date Calculator</h1>
+    <input type="button" id="login-button" value="Login"></input>
+
+    <table>
+      <tbody>
+        <tr>
+          <form id="division">
+            <td>
+              <input type="radio" id="IRB" name="initial-menu" value="IRB" />
+              <label for="IBR">IRB</label>
+            </td>
+            <td>
+              <input type="radio" , id="FC" name="initial-menu" , value="FC" />
+              <label for="FC"> FC</label>
+            </td>
+          </form>
+        </tr>
+        <tr>
+          <td class="table-label">Document Type:</td>
+          <td class="input-box">
+            <select id="documents"> </select>
+          </td>
+        </tr>
+        <tr>
+          <td id="date-name" class="table-label">Date Received:</td>
+          <td class="input-box">
+            <form id="date-form">
+              <input
+                id="date-selector"
+                type="date"
+                ,
+                placeholder="day/month/year"
+                required
+              />
+              <!-- <input type="submit" /> -->
+              <!-- console log, don't clear value -->
+            </form>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for = "client-name">Client Name</label>
+            <input id = "client-name" type = "text" placeholder = "enter client name">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class = "outlook">
+      <br>
+      <br>
+      <br>
+    <h1>Outlook Integration</h1>
+<!-- subject -->
+<label for = "event-subject"> Subject </label>
+<input id= "event-subject" type = "text" value = "" >
+<br>
+<!-- content -->
+<label for = "event-content"> Content </label>
+<textarea id = "event-content" rows="4" cols="50" placeholder="Add any relevant notes here.">
+</textarea>
+<br>
+<!-- due date -->
+<label for = "due-date">Date of Submission</label> 
+<input type = "date" id = "due-date">
+<br>
+<!-- attendees -->
+<label for="atendees-search">Please type any attendees</label>
+<input list="attendees" id="attendees-search" name="attendees-search" />
+<datalist id="attendees">
+</datalist>
+<button id="add-attendees" onclick= "addAttendee()">Add Attendee</button> 
+<br>
+<!-- Reminders -->
+<span>Select reminders</span>
+<br>
+<input type="radio" name="reminder" value="2 days" id="2-days">
+<label for="2-days">2 Days</label>
+<input type="radio" name="reminder" value="7 days" id="7-days">
+<label for="2-days">7 Days</label>
+<input type="radio" name="reminder" value="14 days" id="14-days">
+<label for="2-days">14 Days</label>
+<input type="radio" name="reminder" value="21 days" id="21-days">
+<label for="2-days">21 Days</label>
+<br>
+<button id="calendar-button" onclick = "viewCalendar()"> Add Calendar Event </button>
+
+    </div>
+    <script
+      type="text/javascript"
+      src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js"
+      integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      if (typeof Msal === "undefined")
+        document.write(
+          unescape(
+            "%3Cscript src='https://alcdn.msftauth.net/lib/1.2.1/js/msal.js' type='text/javascript' integrity='sha384-m/3NDUcz4krpIIiHgpeO0O8uxSghb+lfBTngquAo2Zuy2fEF+YgFeP08PWFo5FiJ' crossorigin='anonymous'%3E%3C/script%3E"
+          )
+        );
+    </script>
+    <!-- <script src="auth.js"></script>
+    <script src="index.js"></script>
+    <script src="graphConfig.js"></script> -->
+  </body>
+</html>

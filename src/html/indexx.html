@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guap Diarizing</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+  <body>
+    <script>
+      swal("Hello World")
+    </script>
+    <table>
+      <td>
+        <div class="sider">
+          <img
+            src="verticalCanadaPic.jpg"
+            alt="Canadian flag"
+            width="350"
+            height="650"
+          />
+          <div class="centered">Diarize the right way!</div>
+        </div>
+      </td>
+      <td>
+        <div class="column1">
+          <button class= "button" id="login-button">Login to Outlook</button>  
+          <h3>Input Here:</h3>
+          <div class="IRB-FC-table">
+            <table>
+              <td>
+                <input type="radio" id="IRB" name="initial-menu" value="IRB" />
+                <label for="IBR">IRB</label>
+              </td>
+              <td>
+                <input
+                  type="radio"
+                  ,
+                  id="FC"
+                  name="initial-menu"
+                  ,
+                  value="FC"
+                />
+                <label for="FC"> FC</label>
+              </td>
+            </table>
+          </div>
+          <div class="document-type">
+            <label for="documents">Document type: </label>
+            <select id="documents"> </select>
+          </div>
+          <br />
+          <div class="date-recieved">
+            <label for="date-selector" id= "date-name"> Date Recieved: </label>
+            <input
+              id="date-selector"
+              type="date"
+              placeholder="day/month/year"
+              required
+            />
+          </div>
+          <br />
+          <div class="client">
+            <label for="client-name">Client Name: </label>
+            <input
+              id="client-name"
+              type="text"
+              placeholder="Enter Client Name"
+            />
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="column2">
+          <h3>Your Event:</h3>
+          <label for="event-subject"> Subject: </label>
+          <input id="event-subject" type="text" value="" placeholder="Subject"/>
+          <br />
+          <!-- content -->
+          <label for="event-content"> Content: </label>
+          <textarea
+            id="event-content"
+            rows="3"
+            cols="50"
+            placeholder="Add any relevant notes here."></textarea>
+          <br />
+          <!-- due date -->
+          <label for="due-date">Date of Submission: </label>
+          <input type="date" id="due-date" />
+          <br />
+          <!-- attendees -->
+          <label for="atendees-search">Please type any attendees: </label>
+          <input
+            list="attendees"
+            id="attendees-search"
+            name="attendees-search"
+          />
+          <datalist id="attendees"> </datalist>
+          <button class = "button" id="add-attendees" onclick="addAttendee()">
+            Add Attendee
+          </button>
+          <br />
+          <!-- Reminders -->
+          <span>Select reminder: </span>
+          <br />
+          <input type="radio" name="reminder" value="2 days" id="2-days" />
+          <label for="2-days">2 Days</label>
+          <input type="radio" name="reminder" value="7 days" id="7-days" />
+          <label for="2-days">7 Days</label>
+          <input type="radio" name="reminder" value="14 days" id="14-days" />
+          <label for="2-days">14 Days</label>
+          <input type="radio" name="reminder" value="21 days" id="21-days" />
+          <label for="2-days">21 Days</label>
+          <br />
+          <button class ="button" id="calendar-button" onclick="viewCalendar()">
+            Add Calendar Event
+          </button>
+        </div>
+      </td>
+    </table>
+    <script
+      type="text/javascript"
+      src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js"
+      integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript">
+      if (typeof Msal === "undefined")
+        document.write(
+          unescape(
+            "%3Cscript src='https://alcdn.msftauth.net/lib/1.2.1/js/msal.js' type='text/javascript' integrity='sha384-m/3NDUcz4krpIIiHgpeO0O8uxSghb+lfBTngquAo2Zuy2fEF+YgFeP08PWFo5FiJ' crossorigin='anonymous'%3E%3C/script%3E"
+          )
+        );
+    </script>
+    <script src="auth.js"></script>
+    <script src="index.js"></script>
+    <script src="graphConfig.js"></script>
+  </body>
+</html>
