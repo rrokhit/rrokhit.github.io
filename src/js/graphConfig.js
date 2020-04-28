@@ -17,7 +17,7 @@ clientName.addEventListener("input", function (event) {
 
 //endpoints for various API calls
 const graphConfig = {
-  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me/profile",
+  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
   graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages",
   graphCalendarEndpointOne:
     "https://graph.microsoft.com/v1.0/me/calendar/events",
