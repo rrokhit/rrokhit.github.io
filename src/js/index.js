@@ -234,6 +234,7 @@ function dateCalculation() {
     console.log(finalString);
   }
   subDate.value = dateConvert(subDateString);
+  subDate.disabled =true;
 }
 
 function realDateCalculation(interval, funcDate) {
