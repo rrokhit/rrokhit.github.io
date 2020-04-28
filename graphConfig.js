@@ -149,6 +149,7 @@ function submitButton(theUrl, token) {
   event.start.dateTime = finalString;
   event.end.dateTime = finalString;
   console.log(event);
+  swal(event);
 
   if (check("2-days")) {
     // event.start.dateTime = realDateCalculation(-2, subDateString);
