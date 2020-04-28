@@ -1,157 +1,190 @@
 body {
-    background-color: white;
-    font-family: Helvetica;
-    font-size: 16px;
-    padding: 20px;
-    margin: 0px;
-    margin-right: 0px;
-    margin-bottom: 20px;
-  }
-  table {
-    border-collapse: separate;
-  }
-  
-  hr {
-    background-color: black;
-    height: 3px;
-    width: 245px;
-    border: none;
-  }
-  
-  #main-table {
-    table-layout: fixed;
-    bottom: 0;
-    top: 0;
-  }
-  
-  .tablem-col-2 {
-    padding-top: 130px;
-    background-color: gainsboro;
+  background-color: white;
+  font-family: Helvetica;
+  font-size: 16px;
+  padding: 20px;
+  margin: 0px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+}
+table {
+  border-collapse: separate;
+}
+
+hr {
+  background-color: black;
+  height: 3px;
+  width: 245px;
+  border: none;
+}
+
+#main-table {
+  table-layout: fixed;
+  bottom: 0;
+  top: 0;
+}
+
+.tablem-col-2 {
+  padding-top: 130px;
+  background-color: gainsboro;
+  position: absolute;
+  bottom: 0;
+  top: 80px;
+  right: 0;
+  width: 25vw;
+  box-shadow: -3px 1px 2px 0px gray;
+}
+
+#main-content {
+  padding-top: 130px;
+}
+.column1 {
+  column-width: 400px;
+}
+
+.centered {
+  position: absolute;
+  bottom: 450px;
+  left: 75px;
+  font-family: Helvetica;
+  font-size: 25px;
+}
+
+.button {
+  background-color: #0468b0;
+  color: white;
+  border-radius: 12px;
+  padding: 12px 30px;
+}
+
+button:hover {
+  background-color: #f79258;
+  cursor: pointer;
+}
+
+/* orange: #eb9234 */
+/* beigish : #cfc1a7 */
+/* blueSteel : #c5c8d6 */
+/* cream : #ebdebe */
+/* alsoSteel: #c7c5c1; */
+/* ebedebe in the sun: #e8c690 */
+
+#banner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #ff1100;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  font: Helvetica;
+  font-size: 45px;
+  font-weight: bold;
+  color: white;
+  font-stretch: ultra expanded;
+  box-shadow: 0 8px 10px -6px black;
+}
+
+#banner_contents {
+  width: 100%;
+  font: Helvetica;
+  font-size: 35px;
+  font-weight: bold;
+  text-decoration-color: white;
+}
+
+#banner2 {
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  background-color: #f0d9d8;
+  margin: 0 auto;
+  text-align: left;
+  width: 100%;
+  height: 50 px;
+  font: Helvetica;
+  font-size: 14px;
+  color: black;
+  font-stretch: condensed;
+  box-shadow: 0 6px 10px -6px black;
+}
+
+#banner_contents2 {
+  width: 75%;
+  font: Helvetica;
+  font-size: 30 px;
+  font-weight: bold;
+  text-decoration-color: white;
+}
+
+#banner2-table {
+  width: 70%;
+  color: black;
+}
+#login-button {
+  background-color: #0468b0;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 15px;
+}
+.event-subject {
+  font-size: larger;
+  color: #0468b0;
+  font-weight: bolder;
+}
+
+#banner2-table-col2 {
+  text-align: right;
+}
+
+.event-details {
+  text-align: center;
+}
+/* 
+.menu-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+} */
+
+.menu-label input {
     position: absolute;
-    bottom: 0;
-    top: 80px;
-    right: 0;
-    width: 25vw;
-    box-shadow: -3px 1px 2px 0px gray;
-  }
-  
-  #main-content {
-    padding-top: 130px;
-  }
-  .column1 {
-    column-width: 400px;
-  }
-  
-  .centered {
-    position: absolute;
-    bottom: 450px;
-    left: 75px;
-    font-family: Helvetica;
-    font-size: 25px;
-  }
-  
-  .button {
-    background-color: #0468b0;
-    color: white;
-    border-radius: 12px;
-    padding: 12px 30px;
-  }
-  
-  button:hover {
-    background-color: #f79258;
+    opacity: 0;
     cursor: pointer;
-  }
-  
-  /* orange: #eb9234 */
-  /* beigish : #cfc1a7 */
-  /* blueSteel : #c5c8d6 */
-  /* cream : #ebdebe */
-  /* alsoSteel: #c7c5c1; */
-  /* ebedebe in the sun: #e8c690 */
-  
-  #banner {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: #ff1100;
-    margin: 0 auto;
+    height: 0;
+    width:0;
     text-align: center;
-    width: 100%;
-    height: 80px;
-    font: Helvetica;
-    font-size: 45px;
-    font-weight: bold;
-    color: white;
-    font-stretch: ultra expanded;
-    box-shadow: 0 8px 10px -6px black;
-  }
-  
-  #banner_contents {
-    width: 100%;
-    font: Helvetica;
-    font-size: 35px;
-    font-weight: bold;
-    text-decoration-color: white;
-  }
-  
-  #banner2 {
-    position: absolute;
-    top: 80px;
-    left: 0px;
-    background-color: #f0d9d8;
-    margin: 0 auto;
-    text-align: left;
-    width: 100%;
-    height: 50 px;
-    font: Helvetica;
-    font-size: 14px;
-    color: black;
-    font-stretch: condensed;
-    box-shadow: 0 6px 10px -6px black;
-  }
-  
-  #banner_contents2 {
-    width: 75%;
-    font: Helvetica;
-    font-size: 30 px;
-    font-weight: bold;
-    text-decoration-color: white;
-  }
-  
-  #banner2-table {
-    width: 70%;
-    color: black;
-  }
-  #login-button {
-    background-color: #0468b0;
-    color: white;
-    border-radius: 20px;
-    padding: 10px 15px;
-  }
-  
-  
-  
-  .event-subject {
-    font-size: larger;
-    color: #0468b0;
-    font-weight: bolder;
-  }
-  
-#banner2-logged-in {
-    text-align: right;
-    font-size: medium;
+    align-content: center;
 }
 
-#banner2-name-info {
-text-align: left;
-font-size: medium;
+.menu-span {
+  position: relative;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 100px;
+  text-align: center;
+  align-content: center;
+  color: white;
+  background-color: coral;
+  border-radius: 100px;
 }
 
-  #banner2-login-button {
-    text-align: right;
-  }
-  
-  .event-details {
-    text-align: center;
-  }
-  
+
+.menu-label:hover input ~ .menu-span {
+  background-color: #ccc;
+  cursor: pointer;
+}
+.menu-label input:checked ~ .menu-span {
+  background-color: #2196F3;
+}
+
