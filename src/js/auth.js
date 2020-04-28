@@ -73,6 +73,12 @@ loginButton.addEventListener("click", function (event) {
   }
 });
 
+loginButton.addEventListener("load",function(){
+  if(myMSALObj.getAccount()){
+    seeProfile();
+  }
+})
+
 //function to sign out
 function signOut() {
   loginButton.innerHTML = "Login to Outlook";
@@ -132,6 +138,7 @@ function seeProfile() {
 
 function processProfile(){
 
+  bannerLogin.innerHTML = "Logged in as: ";
   bannerName.innerHTML=profileResponse.displayName;
   bannerEmail.innerHTML = profileResponse.userPrincipalName;
 
