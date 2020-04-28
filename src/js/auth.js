@@ -131,7 +131,9 @@ function seeProfile() {
 }
 
 function processProfile(){
-  continue;
+  
+  bannerName.innerHTML=profileResponse.displayName;
+  bannerEmail.innerHTML = profileResponse.userPrincipalName;
 
 }
 
