@@ -115,13 +115,6 @@ function getPeople() {
 
 
 
-<td id="banner2-name-info">
-<p id="banner-name">Name McName</p>
-<p id = "banner-email">emailaddress@email.com</p>
-</td>
-
-
-
 //function to get profile
 function seeProfile() {
   if (myMSALObj.getAccount()) {
