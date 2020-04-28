@@ -42,7 +42,6 @@
                   <button class="button" id="login-button">
                     Login to Outlook
                   </button>
-                  <a href="html/test.html">Click me!</a>
                 </td>
               </table>
             </div>
@@ -144,7 +143,7 @@
                 <input type="date" id="due-date" />
                 <br />
                 <!-- attendees -->
-                <label for="atendees-search">Please type any attendees: </label>
+                <label for="atendees-search">Please enter any attendees: </label>
                 <br />
                 <input
                   list="attendees"
@@ -200,14 +199,17 @@
         <td class="tablem-col-2">
           <div class="event-details">
             <p class="event-title">Your Event:</p>
-            <p class="event-subject">
+            <p class="event-subject" id="sidebar-subject">
               This is the subject of the event for now
             </p>
-            <p class="date-and-time">Wednesday October 31, 2020</p>
+            <p class="date-and-time" id="sidebar-date">Wednesday October 31, 2020</p>
             <hr />
+            <div id="sidebar-attendees">
             <p class="attendees-final">Attendes: Name1, and so on</p>
+            <br>
+            </div>
             <hr />
-            <p class="subject-final">
+            <p class="subject-final" id="sidebar-content">
               The subject of this email is long and complicated... Pretty boring
               don't listen please
             </p>
