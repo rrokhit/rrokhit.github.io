@@ -131,8 +131,7 @@ function seeProfile() {
 }
 
 function processProfile(){
-  console.log(profileResponse.displayName);
-  console.log(profileResponse.userPrincipalName);
+
   bannerName.innerHTML=profileResponse.displayName;
   bannerEmail.innerHTML = profileResponse.userPrincipalName;
 
