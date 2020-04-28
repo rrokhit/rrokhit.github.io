@@ -1,5 +1,8 @@
 var loginButton = document.getElementById("login-button");
 var contactsResponse;
+var bannerName = document.getElementById("banner-name");
+var bannerEmail = document.getElementById("banner-email");
+var bannerLogin = document.getElementById("banner-logged-in");
 
 //initialize MSAL based on AzureAD configuration
 const msalConfig = {
@@ -50,6 +53,9 @@ function signIn() {
       console.log(loginResponse);
       console.log(Object.keys(loginResponse));
       getPeople();
+      seeProfile();
+      loginButton.innerHTML = "Log out";
+
     })
     .catch((error) => {
       console.log(error);
@@ -60,16 +66,19 @@ loginButton.addEventListener("click", function (event) {
   if (!myMSALObj.getAccount()) {
     //this means that the user is not logged in
     signIn();
-    loginButton.innerHTML = "Log out";
   } else {
     //this means user is already logged in
     signOut();
-    loginButton.innerHTML = "Login to Outlook";
+    
   }
 });
 
 //function to sign out
 function signOut() {
+  loginButton.innerHTML = "Login to Outlook";
+  bannerName.innerHTML = "";
+   bannerEmail.innerHTML = "";
+   bannerLogin.innerHTML = "Not cuurently logged in";
   myMSALObj.logout();
 }
 
@@ -103,6 +112,36 @@ function getPeople() {
     });
   }
 }
+
+
+
+<td id="banner2-name-info">
+<p id="banner-name">Name McName</p>
+<p id = "banner-email">emailaddress@email.com</p>
+</td>
+
+
+
+//function to get profile
+function seeProfile() {
+  if (myMSALObj.getAccount()) {
+    getTokenPopup(AccessTokenRequest)
+      .then((response) => {
+        callMSGraph(graphConfig.graphMeEndpoint, response.accessToken);
+        // profileButton.classList.add("d-none");
+        // mailButton.classList.remove("d-none");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+}
+
+function processProfile(){
+  continue;
+
+}
+
 
 //function to add calendar events
 function viewCalendar() {
