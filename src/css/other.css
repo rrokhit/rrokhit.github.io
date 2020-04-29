@@ -2,12 +2,12 @@ body {
   background-color: #e3ecf1;
   font-family: Helvetica;
   font-size: 16px;
-  padding: 20px;
+  padding: 0px;
   margin: 0px;
   margin-right: 0px;
   margin-bottom: 20px;
 }
-table {
+table { 
   border-collapse: separate;
 }
 
@@ -73,6 +73,11 @@ button:hover {
 /* alsoSteel: #c7c5c1; */
 /* ebedebe in the sun: #e8c690 */
 
+#logo-img {
+  top: 0px;  
+  padding: 0px;
+}
+
 #banner {
   position: absolute;
   top: 0px;
@@ -90,12 +95,14 @@ button:hover {
   box-shadow: 0 8px 10px -6px black;
 }
 
-#banner_contents {
+#banner_content {
   width: 100%;
-  font: Helvetica;
-  font-size: 35px;
+  font: "Roboto";
+  font-size: 40px;
+  text-align: center;
   font-weight: bold;
   text-decoration-color: white;
+  top: 0px;
 }
 
 #banner2 {
@@ -133,6 +140,7 @@ button:hover {
   color: white;
   border-radius: 20px;
   padding: 10px 15px;
+  align-self: right;
 }
 #login-button:hover{
   background-color: #581845;
