@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guap Diarizing</title>
     <link rel="stylesheet" type="text/css" href="css/other.css" />
-
+    <link rel="icon" href="logo.ico" type="image/icon type">
 </head>
   <body></body>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -17,7 +17,10 @@
         width="350"
         height="650"
       /> -->
-      <div id="banner_content">Diarize the right way!</div>
+      <div id="banner_content">
+        <img src="logo.png" id="logo-img" height="60px" style="float: left;" alt="guap software logo">
+        Guap Link
+      </div>
     </div>
     <div id="main-content">
       <table id="main-main-table">
@@ -125,6 +128,7 @@
                   type="text"
                   value=""
                   placeholder="Subject"
+                  width = "60px"
                 />
                 <br />
                 <!-- content -->
@@ -162,35 +166,44 @@
                 <!-- Reminders -->
                 <span>Select reminder: </span>
                 <br />
+                <label class = "menu-label">
                 <input
                   type="radio"
                   name="reminder"
                   value="2 days"
                   id="2-days"
                 />
-                <label for="2-days">2 Days</label>
+                <span class="menu-span"> 2 Days </span>
+                </label>
+                <label class = "menu-label">
                 <input
                   type="radio"
                   name="reminder"
                   value="7 days"
                   id="7-days"
                 />
-                <label for="2-days">7 Days</label>
+                <span class="menu-span"> 7 Days </span>
+              </label>
+              <label class = "menu-label">
                 <input
                   type="radio"
                   name="reminder"
                   value="14 days"
                   id="14-days"
                 />
-                <label for="2-days">14 Days</label>
+                <span class="menu-span"> 14 Days </span>
+              </label>
+              <label class = "menu-label">
                 <input
                   type="radio"
                   name="reminder"
                   value="21 days"
                   id="21-days"
                 />
-                <label for="2-days">21 Days</label>
+                <span class="menu-span"> 21 Days </span>
+               </label>
                 <br />
+                <button class = "button" id="clear-button" onclick="clear()"> Clear </button>
               </div>
             </td>
           </table>
@@ -200,16 +213,16 @@
           <div class="event-details">
             <p class="event-title">Your Event:</p>
             <p class="event-subject" id="sidebar-subject">
-              This is the subject of the event for now
+              Event Subject
             </p>
-            <p class="date-and-time" id="sidebar-date">Wednesday October 31, 2020</p>
+            <p class="date-and-time" id="sidebar-date"></p>
             <hr />
             <div id="sidebar-attendees">
             <p class="attendees-final">Attendees: </p>
             </div>
             <hr />
             <p class="subject-final" id="sidebar-content">
-              Subject goes here
+              Event Content
             </p>
             <button
               class="button"
