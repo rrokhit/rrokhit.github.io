@@ -13,6 +13,7 @@ var sidebarSubject = document.getElementById("sidebar-subject");
 var sidebarDate = document.getElementById("sidebar-date");
 var sidebarAttendees = document.getElementById("sidebar-attendees");
 var sidebarContent = document.getElementById("sidebar-content");
+var clearButton = document.getElementById("clear-button");
 
 
 //Document list for IRB documents
@@ -234,9 +235,14 @@ function dateCalculation() {
     console.log(finalString);
   }
   subDate.value = dateConvert(subDateString);
-  subDate.disabled =true;
+  var sdValue = subDate.value;
+  var tempDate = new Date(sdValue);
+  tempDate = addDays(tempDate,1);
+  sidebarDate.innerHTML = days[tempDate.getDay()]+", "+months[tempDate.getMonth()] + " "+ (tempDate.getDate()) + ", " + tempDate.getFullYear();
 }
 
+var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 function realDateCalculation(interval, funcDate) {
   var inputDate = new Date(funcDate);
   inputDate.setDate(inputDate.getDate() + 1);
@@ -273,7 +279,29 @@ documentListFC = [
   "Application for Leave and Judicial Review (International)",
   "Applicant's Record (No Rule 9)",
   "Applicant's Record (With Rule 9)",
-  "Affidavits and Memorandum",
+  //"Affidavits and Memorandum",
   "Reply Memorandum",
   // "Book of Authorities"
 ];
+
+clearButton.addEventListener("click", clear());
+
+//function to clear event and begin anew
+function clear() {
+  console.log("Something happened!");
+  subDate.value = null;
+  subjectholder.value ="";
+  body.value = "";
+  clientName.value ="";
+  //replace this with default contact
+  atendeesForEvent = [{
+    emailAddress: {
+      address: "ronenshakes@yahoo.com",
+      name: "Ronen LeRokh",
+    },
+    type: "required",
+  }];
+  const button = reminderButton.find(button => button.checked);
+  button.checked = false;
+
+}
