@@ -6,6 +6,16 @@ var body = document.getElementById("event-content");
 var contactResponse;
 var profileResponse;
 
+//subject line for calendar event if client name is already entered
+documents.addEventListener("change",function(){
+  if (clientName.value != "") {
+    var subjectText = clientName.value + " " + docType;
+    subjectholder.value = subjectText;
+    sidebarSubject.innerHTML=subjectholder.value;
+  }
+})
+
+
 //subject line for calendar event
 clientName.addEventListener("input", function (event) {
   selIndex = docType.selectedIndex;
@@ -81,7 +91,7 @@ attendeesForEvent = [
       name: "Ronen LeRokh",
     },
     type: "required",
-  },
+  }
 ];
 
 //CALL WITH THE ADD BUTTON FOR DATALIST
