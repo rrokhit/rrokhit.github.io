@@ -3,7 +3,7 @@ var contactsResponse;
 var bannerName = document.getElementById("banner-name");
 var bannerEmail = document.getElementById("banner-email");
 var bannerLogin = document.getElementById("banner-logged-in");
-
+var reminderButton = document.getElementsByName("reminder");
 //initialize MSAL based on AzureAD configuration
 const msalConfig = {
   auth: {
@@ -120,7 +120,6 @@ function getPeople() {
 }
 
 
-
 //function to get profile
 function seeProfile() {
   if (myMSALObj.getAccount()) {
@@ -160,3 +159,4 @@ function viewCalendar() {
       });
   }
 }
+  
