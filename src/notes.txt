@@ -95,6 +95,13 @@ holiday recesses
 FEATURE REQUIREMENTS:
 after event is submitted, a summary will be provided and the form will be cleared
 
+MEETING REQUESTS: 
+
+All 4 reminders
+Attatch a file to Outlook
+Be able to add in groups
+Other document type
+
 DESIGN REQUIREMENTS
 login button is clear that you have to complete it first
 make button reactions, especially 'Add attendee'
@@ -113,3 +120,8 @@ add error messages for invalid input
 BUGS:
 make sure subject text changes dynamically
 subject won't work in client name entered before document type
+Date calculations don't change if date doesn't change - Clear button needs to clear date as well
+
+
+
+
