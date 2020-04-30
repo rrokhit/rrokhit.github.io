@@ -65,6 +65,7 @@ const event = {
   location: {
     displayName: null,
   },
+  //set this to default contact
   attendees: [
     {
       emailAddress: {
