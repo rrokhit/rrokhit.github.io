@@ -284,10 +284,34 @@ documentListFC = [
   // "Book of Authorities"
 ];
 
-clearButton.addEventListener("click", clear());
+function hello(){
+  subDate.value = null;
+  subjectholder.value ="";
+  body.value = "";
+  clientName.value ="";
+  //replace this with default contact
+  atendeesForEvent = [{
+    emailAddress: {
+      address: "ronenshakes@yahoo.com",
+      name: "Ronen LeRokh",
+    },
+    type: "required",
+  }];
+  console.log(reminderButton);
+  for (let i = 0; i < reminderButton.length; i ++) {
+      reminderButton[i].checked = false;
+  }
+  datalistValue.value="";
+  sidebarSubject.innerHTML = "Event Subject";
+  sidebarContent.innerHTML = "Event Content";
+  sidebarAttendees.innerHTML= "Attendees: \n"
+  console.log(event);
+}
+
+// clearButton.addEventListener("click", clear());
 
 //function to clear event and begin anew
-function clear() {
+function clear(){
   console.log("Something happened!");
   subDate.value = null;
   subjectholder.value ="";
@@ -303,5 +327,4 @@ function clear() {
   }];
   const button = reminderButton.find(button => button.checked);
   button.checked = false;
-
 }
