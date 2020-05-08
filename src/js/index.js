@@ -252,7 +252,7 @@ function realDateCalculation(interval, funcDate) {
   if (outputDate.getDay() == 0) {
     outputDate = addDays(outputDate, 1);
   } else if (outputDate.getDay() == 6) {
-    outputDate = addDays(outputDate, -1);
+    outputDate = addDays(outputDate, 2);
   }
   console.log("after checking fo weekend: " + outputDate);
   subDateString =
