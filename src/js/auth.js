@@ -32,15 +32,12 @@ myMSALObj.handleRedirectCallback((error, response) => {
 //Scopes to gain access token and get user info
 const AccessTokenRequest = {
   scopes: [
-    "Contacts.Read",
     "Contacts.ReadWrite",
     "User.Read.All",
     "Group.ReadWrite.All",
     "Calendars.ReadWrite",
     "Mail.ReadWrite",
     "People.Read.All",
-    "People.Read",
-    "Contacts.Read",
   ],
 };
 
